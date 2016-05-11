@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    border: 0 none;
+    cursor: inherit;
+    line-height: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+}
+.sprite {
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 39px;
+    position: absolute;
+    background: url(../images/uiscom.png) no-repeat 0 0 transparent;
+}
