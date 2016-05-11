@@ -75,27 +75,28 @@ function SetCursor(id) {
 
 /* ******************** Объекты ******************** */
 
-/*
-name        blendmode     inputrect_init      drawoff_x
-pos_x       attachtype    inputrect_x         drawoff_y
-pos_y       active        inputrect_y
-pos_z       input         inputrect_w         event_mdown
-ang         visible       inputrect_h         event_mup
-scale_x     drag                              event_menter
-scale_y     realdrag      croprect_init       event_mleave
-alp                       croprect_x          event_menter_drag
-color_r                   croprect_y          event_mleave_drag
-color_g                   croprect_w          event_dragdrop
-color_b                   croprect_h          event_drag
-*/
-
 var properties = {
-    name:     "id",
-    pos_x:    "left",
-    pos_y:    "top",
-    pos_z:    "index-z",
-    alp:      "opacity",
-    scale_x:  "scaleX"
+    name:           "id",
+    pos_x:          "left",
+    pos_y:          "top",
+    pos_z:          "z-index",
+    alp:            "opacity",
+    scale_x:        "scaleX",
+    scale_y:        "scaleY",
+    color_r:        "",
+    color_g:        "",
+    color_b:        "",
+    input:          "",
+    drag:           "",
+    realdrag:       "",
+    drawoff_x:      "",
+    drawoff_y:      "",
+    event_mdown:    "",
+    event_mup:      "",
+    event_menter:   "",
+    event_mleave:   "",
+    event_drag:     "",
+    event_dragdrop: ""
 };
 
 // Установка параметров объекту
@@ -104,21 +105,36 @@ function ObjSet(objname, params) {
     var obj = document.getElementById(objname);
 
     for (var key in params) {
+        console.log('key = ', key);
+        console.log('properties[key] = ', properties[key]);
+
         var value = params[key];
         obj[key] = value;
-        //obj.style[ properties[key] ] = value + 'px';
-        obj.style[ properties[key] ] = value;
-    }
 
-    //document.getElementById("main_provider_uis").style.left = "50px";
-    //document.getElementById("main_provider_uis").style.top = "50px";
+        switch(key) {
+          case 'name':
+            obj.id = value;
+            break;
+          case 'pos_x':
+          case 'pos_y':
+            obj.style[ properties[key] ] = value + 'px';
+            break;
+          case 'scale_x':
+          case 'scale_y':
+            obj.style.transform += properties[key] + '(' + value + ')';
+            break;
+          default:
+            obj.style[ properties[key] ] = value;
+            break;
+        }
+    }
 }
 
 // Получение параметров объекта
 function ObjGet(objname) {
     console.log('ObjGet');
-    //console.log('111 ', document.getElementById("main_provider_uis").style.left);
-    //console.log('222 ', document.getElementById("main_provider_uis").style.top);
+    //console.log('111 ', document.getElementById("spr_main_provider_uis").style.left);
+    //console.log('222 ', document.getElementById("spr_main_provider_uis").style.top);
 }
 
 // Прицепить объект к родителю
