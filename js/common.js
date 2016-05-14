@@ -83,18 +83,15 @@ var properties = {
     alp:            "opacity",
     scale_x:        "scaleX",
     scale_y:        "scaleY",
-    color_r:        "",
-    color_g:        "",
-    color_b:        "",
-    input:          "",
+    input:          "pointer-events",
     drag:           "",
     realdrag:       "",
     drawoff_x:      "",
     drawoff_y:      "",
-    event_mdown:    "",
-    event_mup:      "",
-    event_menter:   "",
-    event_mleave:   "",
+    event_mdown:    "onmousedown",
+    event_mup:      "onmouseup",
+    event_menter:   "onmouseover",
+    event_mleave:   "onmouseout",
     event_drag:     "",
     event_dragdrop: ""
 };
@@ -111,21 +108,41 @@ function ObjSet(objname, params) {
         var value = params[key];
         obj[key] = value;
 
+        obj.color = "rgb(155, 102, 102)";
+
         switch(key) {
-          case 'name':
-            obj.id = value;
-            break;
-          case 'pos_x':
-          case 'pos_y':
-            obj.style[ properties[key] ] = value + 'px';
-            break;
-          case 'scale_x':
-          case 'scale_y':
-            obj.style.transform += properties[key] + '(' + value + ')';
-            break;
-          default:
-            obj.style[ properties[key] ] = value;
-            break;
+            case 'name':
+                obj.id = value;
+                break;
+
+            case 'pos_x':
+            case 'pos_y':
+                obj.style[ properties[key] ] = value + 'px';
+                break;
+
+            case 'scale_x':
+            case 'scale_y':
+                obj.style.transform += properties[key] + '(' + value + ')';
+                break;
+
+            case 'input':
+                if (value) {
+                    obj.style[ properties[key] ] = 'auto';
+                } else {
+                    obj.style[ properties[key] ] = 'none';
+                }
+                break;
+
+            case 'event_mdown':
+            case 'event_mup':
+            case 'event_menter':
+            case 'event_mleave':
+                obj[ properties[key] ] = value;
+                break;
+
+            default:
+                obj.style[ properties[key] ] = value;
+                break;
         }
     }
 }
