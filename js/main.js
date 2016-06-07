@@ -1,4 +1,5 @@
 window.onload = function () {
+
     ObjSet("spr_main_provider_uis", { name: "spr_main_provider_uis" });
     ObjSet("spr_main_provider_uis", { src: "uiscom.png" });
     ObjSet("spr_main_provider_uis", { pos_x: 200 });
@@ -12,6 +13,9 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis", { alp: 0.8 });
     ObjSet("spr_main_provider_uis", { drawoff_x: 5 });
     ObjSet("spr_main_provider_uis", { drawoff_y: 5 });
+    
+
+    ObjAnimate("spr_main_provider_uis", "alp", 0, 0, "", [ 0,0,0, 0,0,1 ]);
 
     ObjSet("spr_main_provider_uis",
     {

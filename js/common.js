@@ -109,7 +109,7 @@ function ObjSet(objname, params) {
 
         obj.color = "rgb(155, 102, 102)";
 
-        switch(key) {
+        switch (key) {
             case 'name':
                 obj.id = value;
                 break;
@@ -189,26 +189,53 @@ function ObjDelete(objname) {
     console.log('ObjDelete');
 }
 
-/*
-pos_x
-pos_y
-pos_z
-pos_xy
-scale_x
-scale_y
-scale
-angle
-alpha
-color_r
-color_g
-color_b
-color_rgb
-*/
-
 // Анимирование объекта
-function ObjAnimate(objname, animtype, looped, relative, cb, animobj) {
+function ObjAnimate(obj, anim, loop, relative, cb, anmobj) {
     console.log('ObjAnimate');
+    
+    switch (anim) {
+        case 'pos_x':
+            ObjSet(obj, { pos_x: 0.8 });
+            break;
+
+        case 'pos_y':
+            ObjSet(obj, { pos_y: 0.8 });
+            break;
+
+        case 'pos_z':
+            ObjSet(obj, { pos_z: 0.8 });
+            break;
+
+        case 'alp':
+            ObjSet(obj, { alp: 0.8 });
+            break;
+
+        case 'scale_x':
+            ObjSet(obj, { scale_x: 0.8 });
+            break;
+
+        case 'scale_y':
+            ObjSet(obj, { scale_y: 0.8 });
+            break;
+
+        case 'drawoff_x':
+            ObjSet(obj, { drawoff_x: 0.8 });
+            break;
+
+        case 'drawoff_y':
+            ObjSet(obj, { drawoff_y: 0.8 });
+            break;
+
+        case 'width':
+            ObjSet(obj, { width: 0.8 });
+            break;
+
+        case 'height':
+            ObjSet(obj, { height: 0.8 });
+            break;
+    }
 }
+
 /*
 window.onload = function () {
     //console.log('common window.onload');
