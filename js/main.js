@@ -15,7 +15,7 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis", { drawoff_y: 5 });
     
 
-    ObjAnimate("spr_main_provider_uis", "alp", 0, 0, "", [ 0,0,0, 0,0,1 ]);
+    ObjAnimate("spr_main_provider_uis", "alp", 0, 0, "", [ 0,0,1, 1,0,0 ]);
 
     ObjSet("spr_main_provider_uis",
     {
