@@ -1,14 +1,17 @@
 window.onload = function () {
-    //console.log('main is load');
-
     ObjSet("spr_main_provider_uis", { name: "spr_main_provider_uis" });
-    ObjSet("spr_main_provider_uis", { pos_x: 100 });
-    ObjSet("spr_main_provider_uis", { pos_y: 50 });
-    ObjSet("spr_main_provider_uis", { pos_z: 50 });
-    ObjSet("spr_main_provider_uis", { alp: 0.5 });
+    ObjSet("spr_main_provider_uis", { src: "uiscom.png" });
+    ObjSet("spr_main_provider_uis", { pos_x: 200 });
+    ObjSet("spr_main_provider_uis", { pos_y: 100 });
+    ObjSet("spr_main_provider_uis", { pos_z: 2 });
+    ObjSet("spr_main_provider_uis", { width: 50 });
+    ObjSet("spr_main_provider_uis", { height: 39 });
     ObjSet("spr_main_provider_uis", { scale_x: 1 });
-	ObjSet("spr_main_provider_uis", { scale_y: 1 });
+    ObjSet("spr_main_provider_uis", { scale_y: 1 });
     ObjSet("spr_main_provider_uis", { input: 1 });
+    ObjSet("spr_main_provider_uis", { alp: 0.8 });
+    ObjSet("spr_main_provider_uis", { drawoff_x: 5 });
+    ObjSet("spr_main_provider_uis", { drawoff_y: 5 });
 
     ObjSet("spr_main_provider_uis",
     {

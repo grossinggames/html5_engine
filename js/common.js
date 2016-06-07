@@ -84,16 +84,15 @@ var properties = {
     scale_x:        "scaleX",
     scale_y:        "scaleY",
     input:          "pointer-events",
-    drag:           "",
-    realdrag:       "",
-    drawoff_x:      "",
-    drawoff_y:      "",
+    drawoff_x:      "background-position-x",
+    drawoff_y:      "background-position-y",
     event_mdown:    "onmousedown",
     event_mup:      "onmouseup",
     event_menter:   "onmouseover",
     event_mleave:   "onmouseout",
-    event_drag:     "",
-    event_dragdrop: ""
+    width:          "width",
+    height:         "height",
+    src:            "background-image"
 };
 
 // Установка параметров объекту
@@ -102,8 +101,8 @@ function ObjSet(objname, params) {
     var obj = document.getElementById(objname);
 
     for (var key in params) {
-        console.log('key = ', key);
-        console.log('properties[key] = ', properties[key]);
+        //console.log('key = ', key);
+        //console.log('properties[key] = ', properties[key]);
 
         var value = params[key];
         obj[key] = value;
@@ -122,7 +121,7 @@ function ObjSet(objname, params) {
 
             case 'scale_x':
             case 'scale_y':
-                obj.style.transform += properties[key] + '(' + value + ')';
+                obj.style.transform = properties[key] + '(' + value + ')';
                 break;
 
             case 'input':
@@ -140,7 +139,28 @@ function ObjSet(objname, params) {
                 obj[ properties[key] ] = value;
                 break;
 
+            case 'drawoff_x':
+            case 'drawoff_y':
+                obj.style[ properties[key] ] = value + 'px';
+                break;
+
+            case 'width':
+            case 'height':
+                obj.style[ properties[key] ] = value + 'px';
+                break;
+
+            case 'src':
+                obj.style[ properties[key] ] = 'url(images/' + value + ')';
+                break;
+
+            case 'alp':
+                if (value == true) value = 1;
+                if (value == false) value = 0;
+                obj.style[ properties[key] ] = value;
+                break;
+
             default:
+                console.log('properties[key] = ' + properties[key]);
                 obj.style[ properties[key] ] = value;
                 break;
         }
@@ -186,7 +206,7 @@ color_rgb
 */
 
 // Анимирование объекта
-function ObjAnimate(objname, animtype, looped, relative, cb, { animobj }) {
+function ObjAnimate(objname, animtype, looped, relative, cb, animobj) {
     console.log('ObjAnimate');
 }
 /*
