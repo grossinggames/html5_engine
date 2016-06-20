@@ -121,7 +121,8 @@ function ObjSet(objname, params) {
 
             case 'scale_x':
             case 'scale_y':
-                obj.style.transform = properties[key] + '(' + value + ')';
+                // Затирается значение transform в результате все очищается кроме этого значения
+                obj.style.transform += properties[key] + '(' + value + ')';
                 break;
 
             case 'input':
@@ -192,47 +193,124 @@ function ObjDelete(objname) {
 // Анимирование объекта
 function ObjAnimate(obj, anim, loop, relative, cb, anmobj) {
     console.log('ObjAnimate');
-    
-    switch (anim) {
-        case 'pos_x':
-            ObjSet(obj, { pos_x: 0.8 });
-            break;
 
-        case 'pos_y':
-            ObjSet(obj, { pos_y: 0.8 });
-            break;
+    var array = [0,200, 2,400, 3,100, 4,500];
 
-        case 'pos_z':
-            ObjSet(obj, { pos_z: 0.8 });
-            break;
+    if (array.length % 2 == 0) {
+        var TIME_UPDATE = 20; // Время обновления
+        var arrayAnim = [];
 
-        case 'alp':
-            ObjSet(obj, { alp: 0.8 });
-            break;
 
-        case 'scale_x':
-            ObjSet(obj, { scale_x: 0.8 });
-            break;
+        // Создание массива из элементов [время, значение]
+        for (var i = 0; i < array.length; i += 2) {
+            var tmp = [ array[ i ], array[ i + 1 ] ];
+            console.log(tmp);
+            arrayAnim.push(tmp);
+        }
 
-        case 'scale_y':
-            ObjSet(obj, { scale_y: 0.8 });
-            break;
+        // Создание массива из таких элементов [время, значение, шаг]
+        for (var i = 0; i < arrayAnim.length; i++) {
+            var step = 0;
 
-        case 'drawoff_x':
-            ObjSet(obj, { drawoff_x: 0.8 });
-            break;
+            if (i) {
+                var diffTime = (arrayAnim[ i ][ 0 ] - arrayAnim[ i - 1 ][ 0 ]);
+                var diffValue = (arrayAnim[ i ][ 1 ] - arrayAnim[ i - 1 ][ 1 ]);
 
-        case 'drawoff_y':
-            ObjSet(obj, { drawoff_y: 0.8 });
-            break;
+                var counter = Math.floor( (diffTime * 1000) / TIME_UPDATE);
+                step = (diffValue / counter).toFixed(2);
+            }
 
-        case 'width':
-            ObjSet(obj, { width: 0.8 });
-            break;
+            arrayAnim[ i ].push(step);
+        }
 
-        case 'height':
-            ObjSet(obj, { height: 0.8 });
-            break;
+        var way = [ arrayAnim[ 0 ][ 1 ] ];
+
+        // Создание пути
+        for (var i = 0; i + 1 < arrayAnim.length; i++) {
+            var step = Number(arrayAnim[ i + 1 ][ 2 ]);
+            var stepWay = arrayAnim[ i ][ 1 ];
+            var needWay = arrayAnim[ i + 1 ][ 1 ];
+
+            while (stepWay != needWay) {
+                stepWay = ( Number(stepWay) + step ).toFixed(2);
+
+                if (step > 0) {
+                    if (stepWay > needWay) {
+                        stepWay = needWay;
+                    }
+                } else if (step < 0) {
+                    if (stepWay < needWay) {
+                        stepWay = needWay;
+                    }
+                } else {
+                    console.log('Ошибка Шаг равен нулю');
+                }
+                way.push(stepWay);
+            }
+        }
+
+        console.log(way);
+
+        var cursor = 0;
+        var len = way.length;
+
+        function stepAnim() {
+            if (cursor < len) {
+                console.log('cursor: ' + way[ cursor ]);
+
+                var anim = 'pos_x';
+                var onj = 'spr_main_provider_uis';
+
+                switch (anim) {
+                    case 'pos_x':
+                        ObjSet(obj, { pos_x: way[ cursor ] });
+                        break;
+
+                    case 'pos_y':
+                        ObjSet(obj, { pos_y: 0.8 });
+                        break;
+
+                    case 'pos_z':
+                        ObjSet(obj, { pos_z: 0.8 });
+                        break;
+
+                    case 'alp':
+                        ObjSet(obj, { alp: 0.8 });
+                        break;
+
+                    case 'scale_x':
+                        ObjSet(obj, { scale_x: 0.8 });
+                        break;
+
+                    case 'scale_y':
+                        ObjSet(obj, { scale_y: 0.8 });
+                        break;
+
+                    case 'drawoff_x':
+                        ObjSet(obj, { drawoff_x: 0.8 });
+                        break;
+
+                    case 'drawoff_y':
+                        ObjSet(obj, { drawoff_y: 0.8 });
+                        break;
+
+                    case 'width':
+                        ObjSet(obj, { width: 0.8 });
+                        break;
+
+                    case 'height':
+                        ObjSet(obj, { height: 0.8 });
+                        break;
+                }
+
+            } else {
+                console.log('Останавливаем интервал');
+                clearInterval(interval);
+            }
+            cursor++;
+        }
+
+        var interval = setInterval(stepAnim, TIME_UPDATE);
     }
 }
 

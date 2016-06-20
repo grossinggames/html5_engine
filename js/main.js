@@ -1,6 +1,6 @@
 window.onload = function () {
 
-    ObjSet("spr_main_provider_uis", { name: "spr_main_provider_uis" });
+    //ObjSet("spr_main_provider_uis", { name: "spr_main_provider_uis" });
     ObjSet("spr_main_provider_uis", { src: "uiscom.png" });
     ObjSet("spr_main_provider_uis", { pos_x: 200 });
     ObjSet("spr_main_provider_uis", { pos_y: 100 });
@@ -13,9 +13,6 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis", { alp: 0.8 });
     ObjSet("spr_main_provider_uis", { drawoff_x: 5 });
     ObjSet("spr_main_provider_uis", { drawoff_y: 5 });
-    
-
-    ObjAnimate("spr_main_provider_uis", "alp", 0, 0, "", [ 0,0,1, 1,0,0 ]);
 
     ObjSet("spr_main_provider_uis",
     {
@@ -32,4 +29,26 @@ window.onload = function () {
             console.log('event_mleave');
         }
     });
+
+    //ObjAnimate("spr_main_provider_uis", "alp", 0, 0, "", [ 0,0,1, 1,0,0 ]);
+
+    /* Для создания тика браузера
+    timer_global.addEventListener('tick', function (event) {
+        console.log('name = ' + event.detail.name);
+    }, false);
+
+    function tick2(event) {
+        console.log('name2 = ' + event.detail.name);
+    }
+
+    timer_global.addEventListener('tick', tick2);
+
+    timer_global.removeEventListener('tick', tick2);
+
+    var tick = new CustomEvent('tick', {
+        detail: { name: 'Вася' }
+    });
+
+    timer_global.dispatchEvent(tick);
+    */
 };
