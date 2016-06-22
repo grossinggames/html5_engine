@@ -81,6 +81,7 @@ var properties = {
     pos_y:          "top",
     pos_z:          "z-index",
     alp:            "opacity",
+    angle:          "rotate",
     scale_x:        "scaleX",
     scale_y:        "scaleY",
     input:          "pointer-events",
@@ -107,24 +108,26 @@ function ObjSet(objname, params) {
         var value = params[key];
         obj[key] = value;
 
-        obj.color = "rgb(155, 102, 102)";
-
         switch (key) {
             case 'name':
                 obj.id = value;
                 break;
-
             case 'pos_x':
             case 'pos_y':
                 obj.style[ properties[key] ] = value + 'px';
                 break;
-
+            case 'pos_z':
+                obj.style[ properties[key] ] = Math.round(value);
+                break;
+            case 'angle':
+            	console.log('rotate ' + properties[key] + '(' + value + 'deg)');
+                obj.style.transform += properties[key] + '(' + value + 'deg)';
+                break;
             case 'scale_x':
             case 'scale_y':
                 // Затирается значение transform в результате все очищается кроме этого значения
                 obj.style.transform += properties[key] + '(' + value + ')';
                 break;
-
             case 'input':
                 if (value) {
                     obj.style[ properties[key] ] = 'auto';
@@ -132,36 +135,30 @@ function ObjSet(objname, params) {
                     obj.style[ properties[key] ] = 'none';
                 }
                 break;
-
             case 'event_mdown':
             case 'event_mup':
             case 'event_menter':
             case 'event_mleave':
                 obj[ properties[key] ] = value;
                 break;
-
             case 'drawoff_x':
             case 'drawoff_y':
                 obj.style[ properties[key] ] = value + 'px';
                 break;
-
             case 'width':
             case 'height':
                 obj.style[ properties[key] ] = value + 'px';
                 break;
-
             case 'src':
                 obj.style[ properties[key] ] = 'url(images/' + value + ')';
                 break;
-
             case 'alp':
                 if (value == true) value = 1;
                 if (value == false) value = 0;
                 obj.style[ properties[key] ] = value;
                 break;
-
             default:
-                console.log('properties[key] = ' + properties[key]);
+                //console.log('default properties[key] = ' + properties[key]);
                 obj.style[ properties[key] ] = value;
                 break;
         }
@@ -191,20 +188,16 @@ function ObjDelete(objname) {
 }
 
 // Анимирование объекта
-function ObjAnimate(obj, anim, loop, relative, cb, anmobj) {
-    console.log('ObjAnimate');
-
-    var array = [0,200, 2,400, 3,100, 4,500];
-
-    if (array.length % 2 == 0) {
+function ObjAnimate(obj, type, loop, relative, cb, anm) {
+    if (anm.length % 3 == 0) {
         var TIME_UPDATE = 20; // Время обновления
         var arrayAnim = [];
 
-
         // Создание массива из элементов [время, значение]
-        for (var i = 0; i < array.length; i += 2) {
-            var tmp = [ array[ i ], array[ i + 1 ] ];
-            console.log(tmp);
+        // Добавить учет второго параметра [0,0,100, 1,0,200] - ускорения, замедления, линейно
+        for (var i = 0; i < anm.length; i += 3) {
+            var tmp = [ anm[ i ], anm[ i + 2 ] ];
+            //console.log(tmp);
             arrayAnim.push(tmp);
         }
 
@@ -249,65 +242,60 @@ function ObjAnimate(obj, anim, loop, relative, cb, anmobj) {
             }
         }
 
-        console.log(way);
+        //console.log(way);
 
         var cursor = 0;
         var len = way.length;
 
         function stepAnim() {
             if (cursor < len) {
-                console.log('cursor: ' + way[ cursor ]);
+                //console.log('cursor: ' + way[ cursor ]);
 
-                var anim = 'pos_x';
-                var onj = 'spr_main_provider_uis';
-
-                switch (anim) {
+                switch (type) {
                     case 'pos_x':
                         ObjSet(obj, { pos_x: way[ cursor ] });
                         break;
-
                     case 'pos_y':
-                        ObjSet(obj, { pos_y: 0.8 });
+                        ObjSet(obj, { pos_y: way[ cursor ] });
                         break;
-
                     case 'pos_z':
-                        ObjSet(obj, { pos_z: 0.8 });
+                        ObjSet(obj, { pos_z: way[ cursor ] });
                         break;
-
                     case 'alp':
-                        ObjSet(obj, { alp: 0.8 });
+                        ObjSet(obj, { alp: way[ cursor ] });
                         break;
-
+                    case 'angle':
+                        ObjSet(obj, { angle: way[ cursor ] });
+                        break;
                     case 'scale_x':
-                        ObjSet(obj, { scale_x: 0.8 });
+                        ObjSet(obj, { scale_x: way[ cursor ] });
                         break;
-
                     case 'scale_y':
-                        ObjSet(obj, { scale_y: 0.8 });
+                        ObjSet(obj, { scale_y: way[ cursor ] });
                         break;
-
                     case 'drawoff_x':
-                        ObjSet(obj, { drawoff_x: 0.8 });
+                        ObjSet(obj, { drawoff_x: way[ cursor ] });
                         break;
-
                     case 'drawoff_y':
-                        ObjSet(obj, { drawoff_y: 0.8 });
+                        ObjSet(obj, { drawoff_y: way[ cursor ] });
                         break;
-
                     case 'width':
-                        ObjSet(obj, { width: 0.8 });
+                        ObjSet(obj, { width: way[ cursor ] });
                         break;
-
                     case 'height':
-                        ObjSet(obj, { height: 0.8 });
+                        ObjSet(obj, { height: way[ cursor ] });
                         break;
                 }
-
+                cursor++;
             } else {
-                console.log('Останавливаем интервал');
-                clearInterval(interval);
+                if (loop) {
+                    cursor = 0;
+                } else {
+					cb();
+                    //console.log('Останавливаем интервал');
+                    clearInterval(interval);
+                }
             }
-            cursor++;
         }
 
         var interval = setInterval(stepAnim, TIME_UPDATE);
