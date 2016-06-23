@@ -6,7 +6,7 @@ window.onload = function () {
 
     ObjSet("spr_main_provider_uis", { name: "spr_main_provider_uis" });
     ObjSet("spr_main_provider_uis", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis", { pos_x: 100 });
+    ObjSet("spr_main_provider_uis", { pos_x: 0 });
     ObjSet("spr_main_provider_uis", { pos_y: 100 });
     ObjSet("spr_main_provider_uis", { pos_z: 2 });
     ObjSet("spr_main_provider_uis", { width: 50 });
@@ -32,10 +32,10 @@ window.onload = function () {
             console.log('event_mleave');
         }
     });
-    ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { console.log('Call Back!'); }, [0,0,100, 1,0,150, 2,0,100]);
+    ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { console.log('Call Back!'); }, [0,0,0, 1,0,50, 2,0,0]);
 
     ObjSet("spr_main_provider_uis2", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis2", { pos_x: 200 });
+    ObjSet("spr_main_provider_uis2", { pos_x: 100 });
     ObjSet("spr_main_provider_uis2", { pos_y: 100 });
     ObjSet("spr_main_provider_uis2", { pos_z: 2 });
     ObjSet("spr_main_provider_uis2", { width: 50 });
@@ -64,7 +64,7 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis2", "pos_y", 1, 0, function () { console.log('Call Back!'); }, [0,0,100, 1,0,150, 2,0,100]);
 
     ObjSet("spr_main_provider_uis3", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis3", { pos_x: 300 });
+    ObjSet("spr_main_provider_uis3", { pos_x: 200 });
     ObjSet("spr_main_provider_uis3", { pos_y: 100 });
     ObjSet("spr_main_provider_uis3", { pos_z: 2 });
     ObjSet("spr_main_provider_uis3", { width: 50 });
@@ -93,7 +93,7 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis3", "pos_z", 1, 0, function () { console.log('Call Back!'); }, [0,0,1, 1,0,2, 2,0,1]);
 
     ObjSet("spr_main_provider_uis4", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis4", { pos_x: 400 });
+    ObjSet("spr_main_provider_uis4", { pos_x: 300 });
     ObjSet("spr_main_provider_uis4", { pos_y: 100 });
     ObjSet("spr_main_provider_uis4", { pos_z: 2 });
     ObjSet("spr_main_provider_uis4", { width: 50 });
@@ -122,7 +122,7 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis4", "alp", 1, 0, function () { console.log('Call Back!'); }, [0,0,1, 1,0,0, 2,0,1]);
 
     ObjSet("spr_main_provider_uis5", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis5", { pos_x: 500 });
+    ObjSet("spr_main_provider_uis5", { pos_x: 400 });
     ObjSet("spr_main_provider_uis5", { pos_y: 100 });
     ObjSet("spr_main_provider_uis5", { pos_z: 2 });
     ObjSet("spr_main_provider_uis5", { width: 50 });
@@ -151,7 +151,7 @@ window.onload = function () {
     //ObjAnimate("spr_main_provider_uis5", "scale_x", 1, 0, function () { console.log('Call Back!'); }, [0,0,1, 1,0,0, 2,0,1]);
 
     ObjSet("spr_main_provider_uis6", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis6", { pos_x: 600 });
+    ObjSet("spr_main_provider_uis6", { pos_x: 500 });
     ObjSet("spr_main_provider_uis6", { pos_y: 100 });
     ObjSet("spr_main_provider_uis6", { pos_z: 2 });
     ObjSet("spr_main_provider_uis6", { width: 50 });
@@ -180,7 +180,7 @@ window.onload = function () {
     //ObjAnimate("spr_main_provider_uis6", "scale_y", 1, 0, function () { console.log('Call Back!'); }, [0,0,1, 1,0,0, 2,0,1]);
 
     ObjSet("spr_main_provider_uis7", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis7", { pos_x: 700 });
+    ObjSet("spr_main_provider_uis7", { pos_x: 600 });
     ObjSet("spr_main_provider_uis7", { pos_y: 100 });
     ObjSet("spr_main_provider_uis7", { pos_z: 2 });
     ObjSet("spr_main_provider_uis7", { width: 50 });
@@ -210,7 +210,7 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis7", "drawoff_x", 1, 0, function () { console.log('Call Back!'); }, [0,0,0, 1,0,50, 2,0,0]);
 
     ObjSet("spr_main_provider_uis8", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis8", { pos_x: 800 });
+    ObjSet("spr_main_provider_uis8", { pos_x: 700 });
     ObjSet("spr_main_provider_uis8", { pos_y: 100 });
     ObjSet("spr_main_provider_uis8", { pos_z: 2 });
     ObjSet("spr_main_provider_uis8", { width: 50 });
@@ -239,7 +239,7 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis8", "drawoff_y", 1, 0, function () { console.log('Call Back!'); }, [0,0,0, 1,0,50, 2,0,0]);
 
     ObjSet("spr_main_provider_uis9", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis9", { pos_x: 900 });
+    ObjSet("spr_main_provider_uis9", { pos_x: 800 });
     ObjSet("spr_main_provider_uis9", { pos_y: 100 });
     ObjSet("spr_main_provider_uis9", { pos_z: 2 });
     ObjSet("spr_main_provider_uis9", { width: 50 });
@@ -268,7 +268,7 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis9", "width", 1, 0, function () { console.log('Call Back!'); }, [0,0,50, 1,0,150, 2,0,50]);
 
     ObjSet("spr_main_provider_uis10", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis10", { pos_x: 1000 });
+    ObjSet("spr_main_provider_uis10", { pos_x: 900 });
     ObjSet("spr_main_provider_uis10", { pos_y: 100 });
     ObjSet("spr_main_provider_uis10", { pos_z: 2 });
     ObjSet("spr_main_provider_uis10", { width: 50 });
@@ -297,7 +297,7 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis10", "height", 1, 0, function () { console.log('Call Back!'); }, [0,0,50, 1,0,150, 2,0,50]);
 
     ObjSet("spr_main_provider_uis11", { src: "uiscom.png" });
-    ObjSet("spr_main_provider_uis11", { pos_x: 1100 });
+    ObjSet("spr_main_provider_uis11", { pos_x: 970 });
     ObjSet("spr_main_provider_uis11", { pos_y: 100 });
     ObjSet("spr_main_provider_uis11", { pos_z: 2 });
     ObjSet("spr_main_provider_uis11", { width: 50 });
@@ -325,4 +325,29 @@ window.onload = function () {
         }
     });
     //ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log('Call Back!'); }, [0,0,0, 1,0,90, 2,0,0]);
+
+    ObjSet("spr_main_provider_uis12", { src: "uiscom.png" });
+    ObjSet("spr_main_provider_uis12", { pos_x: 20 });
+    ObjSet("spr_main_provider_uis12", { pos_y: 200 });
+    ObjSet("spr_main_provider_uis12", { pos_z: 2 });
+    ObjSet("spr_main_provider_uis12", { width: 50 });
+    ObjSet("spr_main_provider_uis12", { height: 39 });
+    ObjSet("spr_main_provider_uis12", { angle: 90 });
+    ObjSet("spr_main_provider_uis12", { scale_x: 1 });
+    ObjSet("spr_main_provider_uis12", { scale_y: 1 });
+    ObjSet("spr_main_provider_uis12",
+    {
+        event_mdown:  function () {
+            console.log('event_mdown');
+        },
+        event_mup:  function () {
+            console.log('event_mup');
+        },
+        event_menter:  function () {
+            console.log('event_menter');
+        },
+        event_mleave:  function () {
+            console.log('event_mleave');
+        }
+    });
 };

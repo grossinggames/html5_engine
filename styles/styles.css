@@ -9,13 +9,36 @@
     font-weight: inherit;
     font-family: inherit;
 }
-.spr {
+.obj {
     top: 0;
     left: 0;
     position: absolute;
     background-color: transparent;
     background-repeat: no-repeat;
 }
+.spr {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.room {
+    top: 0;
+    left: 0;
+    width: 1024px;
+    height: 800px;
+    position: absolute;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    opacity: 1;
+    pointer-events: none;
+}
 .tmr {
+    display: none;
+}
+.video {
     display: none;
 }

@@ -85,6 +85,7 @@ var properties = {
     scale_x:        "scaleX",
     scale_y:        "scaleY",
     input:          "pointer-events",
+    active:         "display",
     drawoff_x:      "background-position-x",
     drawoff_y:      "background-position-y",
     event_mdown:    "onmousedown",
@@ -128,6 +129,13 @@ function ObjSet(objname, params) {
                 obj.style.transform += properties[key] + '(' + value + ')';
                 break;
             case 'input':
+                if (value) {
+                    obj.style[ properties[key] ] = 'auto';
+                } else {
+                    obj.style[ properties[key] ] = 'none';
+                }
+                break;
+            case 'active':
                 if (value) {
                     obj.style[ properties[key] ] = 'auto';
                 } else {
