@@ -1,4 +1,9 @@
 window.onload = function () {
+    var tickEvent = new CustomEvent('tick');
+    var intervalTick = setInterval(function () {
+        tmr_global.dispatchEvent(tickEvent);
+    }, TIME_UPDATE);
+
     ObjSet("spr_main_provider_uis", { name: "spr_main_provider_uis" });
     ObjSet("spr_main_provider_uis", { src: "uiscom.png" });
     ObjSet("spr_main_provider_uis", { pos_x: 100 });
@@ -14,16 +19,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -43,16 +48,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis2", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis2",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -72,16 +77,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis3", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis3",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -101,16 +106,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis4", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis4",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -130,16 +135,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis5", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis5",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -159,16 +164,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis6", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis6",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -188,16 +193,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis7", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis7",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -218,16 +223,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis8", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis8",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -247,16 +252,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis9", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis9",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -276,16 +281,16 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis10", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis10",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
@@ -306,38 +311,18 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis11", { drawoff_y: 5 });
     ObjSet("spr_main_provider_uis11",
     {
-        event_mdown:  function() {
+        event_mdown:  function () {
             console.log('event_mdown');
         },
-        event_mup:  function() {
+        event_mup:  function () {
             console.log('event_mup');
         },
-        event_menter:  function() {
+        event_menter:  function () {
             console.log('event_menter');
         },
-        event_mleave:  function() {
+        event_mleave:  function () {
             console.log('event_mleave');
         }
     });
     //ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log('Call Back!'); }, [0,0,0, 1,0,90, 2,0,0]);
-
-    /* Для создания тика браузера
-    timer_global.addEventListener('tick', function (event) {
-        console.log('name = ' + event.detail.name);
-    }, false);
-
-    function tick2(event) {
-        console.log('name2 = ' + event.detail.name);
-    }
-
-    timer_global.addEventListener('tick', tick2);
-
-    timer_global.removeEventListener('tick', tick2);
-
-    var tick = new CustomEvent('tick', {
-        detail: { name: 'Вася' }
-    });
-
-    timer_global.dispatchEvent(tick);
-    */
 };

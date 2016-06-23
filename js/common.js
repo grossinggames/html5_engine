@@ -120,7 +120,6 @@ function ObjSet(objname, params) {
                 obj.style[ properties[key] ] = Math.round(value);
                 break;
             case 'angle':
-            	console.log('rotate ' + properties[key] + '(' + value + 'deg)');
                 obj.style.transform += properties[key] + '(' + value + 'deg)';
                 break;
             case 'scale_x':
@@ -187,10 +186,12 @@ function ObjDelete(objname) {
     console.log('ObjDelete');
 }
 
+// Время обновления параметров
+var TIME_UPDATE = 20; 
+
 // Анимирование объекта
 function ObjAnimate(obj, type, loop, relative, cb, anm) {
     if (anm.length % 3 == 0) {
-        var TIME_UPDATE = 20; // Время обновления
         var arrayAnim = [];
 
         // Создание массива из элементов [время, значение]
@@ -291,19 +292,12 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                 if (loop) {
                     cursor = 0;
                 } else {
-					cb();
-                    //console.log('Останавливаем интервал');
-                    clearInterval(interval);
+                    tmr_global.removeEventListener('tick', stepAnim);
+                    cb();
                 }
             }
         }
 
-        var interval = setInterval(stepAnim, TIME_UPDATE);
+        tmr_global.addEventListener('tick', stepAnim);
     }
 }
-
-/*
-window.onload = function () {
-    //console.log('common window.onload');
-}
-*/
