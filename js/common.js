@@ -1,76 +1,79 @@
-//console.log('common is load');
+//console.log("common is load");
 
 /* ******************** Комнаты ******************** */
 
 // Перейти в комнату
 function SwitchRoom(room) {
-    console.log('SwitchRoom');
+    console.log("SwitchRoom");
+    ObjSet("room_example", { active: 0 });
+    ObjSet("room_main", { active: 0 });
+    ObjSet(room, { active: 1 });
 }
 
 // Получить текущую комнату
 function GetCurrentRoom() {
-    console.log('GetCurrentRoom');
+    console.log("GetCurrentRoom");
 }
 
 /* ******************** Звуки ******************** */
 
 // Воспроизвести мелкие звуки
 function PlaySfx(path, loop) {
-    console.log('PlaySfx');
+    console.log("PlaySfx");
 }
 
 // Воспроизвести окружение
 function PlayEnv(path, loop) {
-    console.log('PlayEnv');
+    console.log("PlayEnv");
 }
 
 // Воспроизвести саундрек
 function PlaySoundtrack(path, loop) {
-    console.log('PlaySoundtrack');
+    console.log("PlaySoundtrack");
 }
 
 // Воспроизвести Голос
 function PlayVoice(path, loop) {
-    console.log('PlayVoice');
+    console.log("PlayVoice");
 }
 
 /* ******************** Вывод текста ******************** */
 
 // Показать всплывающий текст
 function ShowPopup(id) {
-    console.log('ShowPopup');
+    console.log("ShowPopup");
 }
 
 // Скрыть всплывающий текст
 function HidePopup() {
-    console.log('HidePopup');
+    console.log("HidePopup");
 }
 
 /* ******************** Настройки ******************** */
 
 // Установить полноэкранный режим
 function SetFullScreen(fs) {
-    console.log('SetFullScreen');
+    console.log("SetFullScreen");
 }
 
 // Получить режим экрана
 function GetFullScreen() {
-    console.log('GetFullScreen');
+    console.log("GetFullScreen");
 }
 
 // Установить громкость звука
 function SetSoundVolume(group, volume) {
-    console.log('SetSoundVolume');
+    console.log("SetSoundVolume");
 }
 
 // Получить громкость звука
 function GetSoundVolume(group) {
-    console.log('GetSoundVolume');
+    console.log("GetSoundVolume");
 }
 
 // Установить курсор
 function SetCursor(id) {
-    console.log('SetCursor');
+    console.log("SetCursor");
 }
 
 /* ******************** Объекты ******************** */
@@ -99,73 +102,73 @@ var properties = {
 
 // Установка параметров объекту
 function ObjSet(objname, params) {
-    //console.log('ObjSet');
+    //console.log("ObjSet");
     var obj = document.getElementById(objname);
 
     for (var key in params) {
-        //console.log('key = ', key);
-        //console.log('properties[key] = ', properties[key]);
+        //console.log("key = ", key);
+        //console.log("properties[key] = ", properties[key]);
 
         var value = params[key];
         obj[key] = value;
 
         switch (key) {
-            case 'name':
+            case "name":
                 obj.id = value;
                 break;
-            case 'pos_x':
-            case 'pos_y':
-                obj.style[ properties[key] ] = value + 'px';
+            case "pos_x":
+            case "pos_y":
+                obj.style[ properties[key] ] = value + "px";
                 break;
-            case 'pos_z':
+            case "pos_z":
                 obj.style[ properties[key] ] = Math.round(value);
                 break;
-            case 'angle':
-                obj.style.transform += properties[key] + '(' + value + 'deg)';
+            case "angle":
+                obj.style.transform += properties[key] + "(" + value + "deg)";
                 break;
-            case 'scale_x':
-            case 'scale_y':
+            case "scale_x":
+            case "scale_y":
                 // Затирается значение transform в результате все очищается кроме этого значения
-                obj.style.transform += properties[key] + '(' + value + ')';
+                obj.style.transform += properties[key] + "(" + value + ")";
                 break;
-            case 'input':
+            case "input":
                 if (value) {
-                    obj.style[ properties[key] ] = 'auto';
+                    obj.style[ properties[key] ] = "auto";
                 } else {
-                    obj.style[ properties[key] ] = 'none';
+                    obj.style[ properties[key] ] = "none";
                 }
                 break;
-            case 'active':
+            case "active":
                 if (value) {
-                    obj.style[ properties[key] ] = 'auto';
+                    obj.style[ properties[key] ] = "block";
                 } else {
-                    obj.style[ properties[key] ] = 'none';
+                    obj.style[ properties[key] ] = "none";
                 }
                 break;
-            case 'event_mdown':
-            case 'event_mup':
-            case 'event_menter':
-            case 'event_mleave':
+            case "event_mdown":
+            case "event_mup":
+            case "event_menter":
+            case "event_mleave":
                 obj[ properties[key] ] = value;
                 break;
-            case 'drawoff_x':
-            case 'drawoff_y':
-                obj.style[ properties[key] ] = value + 'px';
+            case "drawoff_x":
+            case "drawoff_y":
+                obj.style[ properties[key] ] = value + "px";
                 break;
-            case 'width':
-            case 'height':
-                obj.style[ properties[key] ] = value + 'px';
+            case "width":
+            case "height":
+                obj.style[ properties[key] ] = value + "px";
                 break;
-            case 'src':
-                obj.style[ properties[key] ] = 'url(images/' + value + ')';
+            case "src":
+                obj.style[ properties[key] ] = "url(images/" + value + ")";
                 break;
-            case 'alp':
+            case "alp":
                 if (value == true) value = 1;
                 if (value == false) value = 0;
                 obj.style[ properties[key] ] = value;
                 break;
             default:
-                //console.log('default properties[key] = ' + properties[key]);
+                //console.log("default properties[key] = " + properties[key]);
                 obj.style[ properties[key] ] = value;
                 break;
         }
@@ -174,24 +177,24 @@ function ObjSet(objname, params) {
 
 // Получение параметров объекта
 function ObjGet(objname) {
-    console.log('ObjGet');
-    //console.log('111 ', document.getElementById("spr_main_provider_uis").style.left);
-    //console.log('222 ', document.getElementById("spr_main_provider_uis").style.top);
+    console.log("ObjGet");
+    //console.log("111 ", document.getElementById("spr_main_provider_uis").style.left);
+    //console.log("222 ", document.getElementById("spr_main_provider_uis").style.top);
 }
 
 // Прицепить объект к родителю
 function ObjAttach(objname, toobjname) {
-    console.log('ObjAttach');
+    console.log("ObjAttach");
 }
 
 // Отцепить объект
 function ObjDetach(objname) {
-    console.log('ObjDetach');
+    console.log("ObjDetach");
 }
 
 // Удалить объект
 function ObjDelete(objname) {
-    console.log('ObjDelete');
+    console.log("ObjDelete");
 }
 
 // Время обновления параметров
@@ -245,7 +248,7 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                         stepWay = needWay;
                     }
                 } else {
-                    console.log('Ошибка Шаг равен нулю');
+                    console.log("Ошибка Шаг равен нулю");
                 }
                 way.push(stepWay);
             }
@@ -258,40 +261,40 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
 
         function stepAnim() {
             if (cursor < len) {
-                //console.log('cursor: ' + way[ cursor ]);
+                //console.log("cursor: " + way[ cursor ]);
 
                 switch (type) {
-                    case 'pos_x':
+                    case "pos_x":
                         ObjSet(obj, { pos_x: way[ cursor ] });
                         break;
-                    case 'pos_y':
+                    case "pos_y":
                         ObjSet(obj, { pos_y: way[ cursor ] });
                         break;
-                    case 'pos_z':
+                    case "pos_z":
                         ObjSet(obj, { pos_z: way[ cursor ] });
                         break;
-                    case 'alp':
+                    case "alp":
                         ObjSet(obj, { alp: way[ cursor ] });
                         break;
-                    case 'angle':
+                    case "angle":
                         ObjSet(obj, { angle: way[ cursor ] });
                         break;
-                    case 'scale_x':
+                    case "scale_x":
                         ObjSet(obj, { scale_x: way[ cursor ] });
                         break;
-                    case 'scale_y':
+                    case "scale_y":
                         ObjSet(obj, { scale_y: way[ cursor ] });
                         break;
-                    case 'drawoff_x':
+                    case "drawoff_x":
                         ObjSet(obj, { drawoff_x: way[ cursor ] });
                         break;
-                    case 'drawoff_y':
+                    case "drawoff_y":
                         ObjSet(obj, { drawoff_y: way[ cursor ] });
                         break;
-                    case 'width':
+                    case "width":
                         ObjSet(obj, { width: way[ cursor ] });
                         break;
-                    case 'height':
+                    case "height":
                         ObjSet(obj, { height: way[ cursor ] });
                         break;
                 }
@@ -300,12 +303,12 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                 if (loop) {
                     cursor = 0;
                 } else {
-                    tmr_global.removeEventListener('tick', stepAnim);
+                    tmr_global.removeEventListener("tick", stepAnim);
                     cb();
                 }
             }
         }
 
-        tmr_global.addEventListener('tick', stepAnim);
+        tmr_global.addEventListener("tick", stepAnim);
     }
 }

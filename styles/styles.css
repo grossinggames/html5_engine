@@ -35,6 +35,7 @@
     overflow: hidden;
     opacity: 1;
     pointer-events: none;
+    display: none;
 }
 .tmr {
     display: none;
