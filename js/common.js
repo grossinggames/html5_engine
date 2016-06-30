@@ -124,12 +124,13 @@ function ObjSet(objname, params) {
                 obj.style[ properties[key] ] = Math.round(value);
                 break;
             case "angle":
-                obj.style.transform += properties[key] + "(" + value + "deg)";
+                obj.style.transform = obj.style.transform.replace(/rotate\(\w+(.\w+)?\)/g, "rotate(" + value + "deg)");
                 break;
             case "scale_x":
+                obj.style.transform = obj.style.transform.replace(/scaleX\(\w+(.\w+)?\)/g, "scaleX(" + value + ")");
+                break;
             case "scale_y":
-                // Затирается значение transform в результате все очищается кроме этого значения
-                obj.style.transform += properties[key] + "(" + value + ")";
+                obj.style.transform = obj.style.transform.replace(/scaleY\(\w+(.\w+)?\)/g, "scaleY(" + value + ")");
                 break;
             case "input":
                 if (value) {
@@ -198,7 +199,9 @@ function ObjDelete(objname) {
 }
 
 // Время обновления параметров
-var TIME_UPDATE = 20; 
+var TIME_UPDATE = 20;
+
+var anims = [];
 
 // Анимирование объекта
 function ObjAnimate(obj, type, loop, relative, cb, anm) {
@@ -260,6 +263,7 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
         var len = way.length;
 
         function stepAnim() {
+            //console.log(type);
             if (cursor < len) {
                 //console.log("cursor: " + way[ cursor ]);
 
@@ -308,7 +312,14 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                 }
             }
         }
-
+        // Проверить что творится в массивах
+        if (!anims[obj]) {
+            anims[obj] = [];
+        }
+        if (anims[obj][type]) {
+            tmr_global.removeEventListener("tick", anims[obj][type]);
+        }
+        anims[obj][type] = stepAnim;
         tmr_global.addEventListener("tick", stepAnim);
     }
 }

@@ -120,14 +120,14 @@ window.onload = function () {
         }
     });
     ObjAnimate("spr_main_provider_uis4", "alp", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
-
+/*
     ObjSet("spr_main_provider_uis5", { src: "uiscom.png" });
     ObjSet("spr_main_provider_uis5", { pos_x: 400 });
     ObjSet("spr_main_provider_uis5", { pos_y: 100 });
     ObjSet("spr_main_provider_uis5", { pos_z: 2 });
     ObjSet("spr_main_provider_uis5", { width: 50 });
     ObjSet("spr_main_provider_uis5", { height: 39 });
-    ObjSet("spr_main_provider_uis5", { scale_x: 1 });
+    ObjSet("spr_main_provider_uis5", { scale_x: 0.5 });
     ObjSet("spr_main_provider_uis5", { scale_y: 1 });
     ObjSet("spr_main_provider_uis5", { input: 1 });
     ObjSet("spr_main_provider_uis5", { alp: 0.8 });
@@ -148,7 +148,8 @@ window.onload = function () {
             console.log("event_mleave");
         }
     });
-    //ObjAnimate("spr_main_provider_uis5", "scale_x", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
+    */
+    ObjAnimate("spr_main_provider_uis5", "scale_x", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
 
     ObjSet("spr_main_provider_uis6", { src: "uiscom.png" });
     ObjSet("spr_main_provider_uis6", { pos_x: 500 });
@@ -177,7 +178,7 @@ window.onload = function () {
             console.log("event_mleave");
         }
     });
-    //ObjAnimate("spr_main_provider_uis6", "scale_y", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
+    ObjAnimate("spr_main_provider_uis6", "scale_y", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
 
     ObjSet("spr_main_provider_uis7", { src: "uiscom.png" });
     ObjSet("spr_main_provider_uis7", { pos_x: 600 });
@@ -307,8 +308,8 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis11", { scale_y: 1 });
     ObjSet("spr_main_provider_uis11", { input: 1 });
     ObjSet("spr_main_provider_uis11", { alp: 0.8 });
-    ObjSet("spr_main_provider_uis11", { drawoff_x: 5 });
-    ObjSet("spr_main_provider_uis11", { drawoff_y: 5 });
+    ObjSet("spr_main_provider_uis11", { drawoff_x: 0 });
+    ObjSet("spr_main_provider_uis11", { drawoff_y: 0 });
     ObjSet("spr_main_provider_uis11",
     {
         event_mdown:  function () {
@@ -324,7 +325,7 @@ window.onload = function () {
             console.log("event_mleave");
         }
     });
-    //ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
+    ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
 
     ObjSet("spr_main_provider_uis12", { src: "uiscom.png" });
     ObjSet("spr_main_provider_uis12", { pos_x: 20 });
