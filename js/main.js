@@ -4,7 +4,21 @@ window.onload = function () {
         tmr_global.dispatchEvent(tickEvent);
     }, TIME_UPDATE);
 
-    ObjSet("spr_main_provider_uis",
+    /*
+    ObjSet("spr_main_example", { src: "example.png" });
+    ObjSet("spr_main_example", { pos_x: 0 });
+    ObjSet("spr_main_example", { pos_y: 0 });
+    ObjSet("spr_main_example", { pos_z: 0 });
+    ObjSet("spr_main_example", { width: 50 });
+    ObjSet("spr_main_example", { height: 50 });
+    ObjSet("spr_main_example", { angle: 0 });
+    ObjSet("spr_main_example", { scale_x: 1 });
+    ObjSet("spr_main_example", { scale_y: 1 });
+    ObjSet("spr_main_example", { input: 1 });
+    ObjSet("spr_main_example", { alp: 1 });
+    ObjSet("spr_main_example", { drawoff_x: 0 });
+    ObjSet("spr_main_example", { drawoff_y: 0 });
+    ObjSet("spr_main_example",
     {
         event_mdown:  function () {
             console.log("event_mdown");
@@ -19,163 +33,38 @@ window.onload = function () {
             console.log("event_mleave");
         }
     });
-    ObjSet("spr_main_provider_uis2",
+    ObjAnimate("spr_main_example", "angle", 0, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
+    SwitchRoom("room_example");
+    */
+
+    ObjSet("spr_main_provider_uis13", { popup: "Переход в другую комнату" });
+    ObjSet("spr_main_provider_uis31", { popup: "Переход в другую комнату" });
+
+    ObjSet("spr_main_provider_uis13",
     {
         event_mdown:  function () {
             console.log("event_mdown");
         },
         event_mup:  function () {
             console.log("event_mup");
+            SwitchRoom("room_example");
         },
         event_menter:  function () {
             console.log("event_menter");
+            console.log(spr_main_provider_uis13.title);
         },
         event_mleave:  function () {
             console.log("event_mleave");
         }
     });
-    ObjSet("spr_main_provider_uis3",
+    ObjSet("spr_main_provider_uis31",
     {
         event_mdown:  function () {
             console.log("event_mdown");
         },
         event_mup:  function () {
             console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis4",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis5",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis6",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis7",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis8",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis9",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis10",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis11",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis12",
-    {
-        event_mdown:  function () {
-            console.log("event_mdown");
-        },
-        event_mup:  function () {
-            console.log("event_mup");
+            SwitchRoom("room_main");
         },
         event_menter:  function () {
             console.log("event_menter");
@@ -196,6 +85,6 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis9", "width", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis10", "height", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
-    SwitchRoom("room_example");
+
     SwitchRoom("room_main");
 };

@@ -1,18 +1,22 @@
 //console.log("common is load");
 
 /* ******************** Комнаты ******************** */
+var rooms = ["room_example", "room_main"];
+var currentRoom = "";
 
 // Перейти в комнату
 function SwitchRoom(room) {
-    console.log("SwitchRoom");
-    ObjSet("room_example", { active: 0 });
-    ObjSet("room_main", { active: 0 });
+    for (var i = 0, len = rooms.length; i < len; i++) {
+        ObjSet(rooms[i], { active: 0 });
+    };
     ObjSet(room, { active: 1 });
+    currentRoom = room;
 }
 
 // Получить текущую комнату
 function GetCurrentRoom() {
     console.log("GetCurrentRoom");
+    return currentRoom;
 }
 
 /* ******************** Звуки ******************** */
@@ -97,7 +101,8 @@ var properties = {
     event_mleave:   "onmouseout",
     width:          "width",
     height:         "height",
-    src:            "background-image"
+    src:            "background-image",
+    popup:          "title"
 };
 
 // Установка параметров объекту
@@ -115,6 +120,9 @@ function ObjSet(objname, params) {
         switch (key) {
             case "name":
                 obj.id = value;
+                break;
+            case "popup":
+                obj.title = value;
                 break;
             case "pos_x":
             case "pos_y":
