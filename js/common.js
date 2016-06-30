@@ -41,18 +41,6 @@ function PlayVoice(path, loop) {
     console.log("PlayVoice");
 }
 
-/* ******************** Вывод текста ******************** */
-
-// Показать всплывающий текст
-function ShowPopup(id) {
-    console.log("ShowPopup");
-}
-
-// Скрыть всплывающий текст
-function HidePopup() {
-    console.log("HidePopup");
-}
-
 /* ******************** Настройки ******************** */
 
 // Установить полноэкранный режим
@@ -63,16 +51,6 @@ function SetFullScreen(fs) {
 // Получить режим экрана
 function GetFullScreen() {
     console.log("GetFullScreen");
-}
-
-// Установить громкость звука
-function SetSoundVolume(group, volume) {
-    console.log("SetSoundVolume");
-}
-
-// Получить громкость звука
-function GetSoundVolume(group) {
-    console.log("GetSoundVolume");
 }
 
 // Установить курсор
@@ -315,19 +293,19 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                 if (loop) {
                     cursor = 0;
                 } else {
-                    tmr_global.removeEventListener("tick", stepAnim);
+                    tmr_global.removeEventListener(currentRoom, stepAnim);
                     cb();
                 }
             }
         }
         // Проверить что творится в массивах
-        if (!anims[obj]) {
-            anims[obj] = [];
-        }
+        anims[obj] = anims[obj] || [];
+
         if (anims[obj][type]) {
-            tmr_global.removeEventListener("tick", anims[obj][type]);
+            tmr_global.removeEventListener(currentRoom, anims[obj][type]);
         }
         anims[obj][type] = stepAnim;
-        tmr_global.addEventListener("tick", stepAnim);
+
+        tmr_global.addEventListener(currentRoom, stepAnim);
     }
 }

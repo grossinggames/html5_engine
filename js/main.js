@@ -1,8 +1,17 @@
 window.onload = function () {
-    var tickEvent = new CustomEvent("tick");
+    var roomsTicks = [];
+
+    for (var i = 0, len = rooms.length; i < len; i++) {
+        roomsTicks[ rooms[i] ] = new CustomEvent(rooms[i]);
+        console.log(rooms[i]);
+    };
+
     var intervalTick = setInterval(function () {
-        tmr_global.dispatchEvent(tickEvent);
+        //tmr_global.dispatchEvent(tickEvent);
+        tmr_global.dispatchEvent(roomsTicks[currentRoom]);
     }, TIME_UPDATE);
+
+    SwitchRoom("room_main");
 
     /*
     ObjSet("spr_main_example", { src: "example.png" });
@@ -85,6 +94,4 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis9", "width", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis10", "height", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
-
-    SwitchRoom("room_main");
 };
