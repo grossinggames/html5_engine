@@ -44,8 +44,10 @@ function PlaySound(path, loop) {
     var type = GetTypeSound(path);
     if (type) {
         sounds[type][path] = sounds[type][path] || new Audio(path);
+        sounds[type][path].loop = loop;
         sounds[type][path].currentTime = 0;
-        sounds[type][path].play();        
+        sounds[type][path].muted = false;
+        sounds[type][path].play();
     }
 }
 
@@ -55,8 +57,7 @@ function StopSound(path) {
     if (type) {
         console.log(path);
         sounds[type][path] = sounds[type][path] || new Audio(path);
-        sounds[type][path].currentTime = 0;
-        sounds[type][path].pause();
+        sounds[type][path].muted = true;
     }
 }
 
