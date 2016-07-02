@@ -137,8 +137,29 @@ var properties = {
     width:          "width",
     height:         "height",
     src:            "background-image",
-    popup:          "title"
+    popup:          "title",
+    cursor:         "cursor"
 };
+
+/*
+cursor value:
+    default
+    crosshair
+    crosshair
+    move
+    pointer
+    progress
+    text
+    wait
+    n-resize
+    ne-resize
+    e-resize
+    se-resize
+    s-resize
+    sw-resize
+    w-resize
+    nw-resize
+*/
 
 // Установка параметров объекту
 function ObjSet(objname, params) {

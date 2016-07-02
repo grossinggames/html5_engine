@@ -26,6 +26,7 @@ window.onload = function () {
     ObjSet("spr_main_example", { alp: 1 });
     ObjSet("spr_main_example", { drawoff_x: 0 });
     ObjSet("spr_main_example", { drawoff_y: 0 });
+    ObjSet("spr_main_example", { cursor: "pointer" });
     ObjSet("spr_main_example",
     {
         event_mdown:  function () {
@@ -45,9 +46,11 @@ window.onload = function () {
     SwitchRoom("room_example");
     */
 
+    ObjSet("spr_main_provider_uis13", { cursor: "pointer" });
+
     ObjSet("spr_main_provider_uis13", { popup: "Переход в другую комнату" });
     ObjSet("spr_main_provider_uis31", { popup: "Переход в другую комнату" });
-
+ 
     ObjSet("spr_main_provider_uis13",
     {
         event_mdown:  function () {
