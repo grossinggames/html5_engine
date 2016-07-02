@@ -21,24 +21,59 @@ function GetCurrentRoom() {
 
 /* ******************** Звуки ******************** */
 
+var sounds = [];
+sounds['sfx'] = [];
+sounds['env'] = [];
+sounds['snd'] = [];
+sounds['voc'] = [];
+
+// Воспроизвести звук
+function PlaySound(path, loop) {
+    var type = path.substr(7, 3);
+
+    switch (type) {
+        case "sfx":
+            PlaySfx(path, loop);
+            break;
+        case "env":
+            PlayEnv(path, loop);
+            break;
+        case "snd":
+            PlaySoundtrack(path, loop);
+            break;
+        case "voc":
+            PlayVoice(path, loop);
+            break;
+    }
+}
+
 // Воспроизвести мелкие звуки
 function PlaySfx(path, loop) {
     console.log("PlaySfx");
+    sounds['sfx'][path] = sounds['sfx'][path] || new Audio(path);
+    sounds['sfx'][path].currentTime = 0;
+    sounds['sfx'][path].play();
 }
 
 // Воспроизвести окружение
 function PlayEnv(path, loop) {
     console.log("PlayEnv");
+    sounds['env'][path] = sounds['env'][path] || new Audio(path);
+    sounds['env'][path].play();
 }
 
 // Воспроизвести саундрек
 function PlaySoundtrack(path, loop) {
     console.log("PlaySoundtrack");
+    sounds['snd'][path] = sounds['snd'][path] || new Audio(path);
+    sounds['snd'][path].play();
 }
 
 // Воспроизвести Голос
 function PlayVoice(path, loop) {
     console.log("PlayVoice");
+    sounds['voc'][path] = sounds['voc'][path] || new Audio(path);
+    sounds['voc'][path].play();
 }
 
 /* ******************** Настройки ******************** */

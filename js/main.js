@@ -1,4 +1,6 @@
 window.onload = function () {
+    SwitchRoom("room_main");
+
     var roomsTicks = [];
 
     for (var i = 0, len = rooms.length; i < len; i++) {
@@ -7,11 +9,8 @@ window.onload = function () {
     };
 
     var intervalTick = setInterval(function () {
-        //tmr_global.dispatchEvent(tickEvent);
         tmr_global.dispatchEvent(roomsTicks[currentRoom]);
     }, TIME_UPDATE);
-
-    SwitchRoom("room_main");
 
     /*
     ObjSet("spr_main_example", { src: "example.png" });
@@ -56,6 +55,7 @@ window.onload = function () {
         },
         event_mup:  function () {
             console.log("event_mup");
+            PlaySound("sounds/voc_sound.mp3", 0);
             SwitchRoom("room_example");
         },
         event_menter:  function () {
@@ -73,6 +73,7 @@ window.onload = function () {
         },
         event_mup:  function () {
             console.log("event_mup");
+            PlaySound("sounds/sfx_sound.mp3", 0);
             SwitchRoom("room_main");
         },
         event_menter:  function () {
