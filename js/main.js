@@ -51,36 +51,36 @@ window.onload = function () {
     ObjSet("spr_main_provider_uis13",
     {
         event_mdown:  function () {
-            console.log("event_mdown");
+            //console.log("event_mdown");
         },
         event_mup:  function () {
-            console.log("event_mup");
-            PlaySound("sounds/voc_sound.mp3", 0);
+            //console.log("event_mup");
+            PlaySound("sounds/sfx_sound.mp3", 0);
             SwitchRoom("room_example");
         },
         event_menter:  function () {
-            console.log("event_menter");
-            console.log(spr_main_provider_uis13.title);
+            //console.log("event_menter");
         },
         event_mleave:  function () {
-            console.log("event_mleave");
+            //console.log("event_mleave");
         }
     });
     ObjSet("spr_main_provider_uis31",
     {
         event_mdown:  function () {
-            console.log("event_mdown");
+            //console.log("event_mdown");
         },
         event_mup:  function () {
-            console.log("event_mup");
+            //console.log("event_mup");
+            StopAllSounds();
             PlaySound("sounds/sfx_sound.mp3", 0);
             SwitchRoom("room_main");
         },
         event_menter:  function () {
-            console.log("event_menter");
+            //console.log("event_menter");
         },
         event_mleave:  function () {
-            console.log("event_mleave");
+            //console.log("event_mleave");
         }
     });
 

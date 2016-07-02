@@ -1,6 +1,7 @@
 //console.log("common is load");
 
 /* ******************** Комнаты ******************** */
+// Все комнаты
 var rooms = ["room_example", "room_main"];
 var currentRoom = "";
 
@@ -22,67 +23,78 @@ function GetCurrentRoom() {
 /* ******************** Звуки ******************** */
 
 var sounds = [];
-sounds['sfx'] = [];
-sounds['env'] = [];
-sounds['snd'] = [];
-sounds['voc'] = [];
+sounds["sfx"] = [];
+sounds["env"] = [];
+sounds["snd"] = [];
+sounds["voc"] = [];
+
+// Получить тип звука
+function GetTypeSound(path) {
+    var type = path.substr(7, 3);
+    if ( (type == "sfx") || (type == "env") || 
+        (type == "snd") || (type == "voc") ) {
+        //console.log("type = " + type);
+        return type;
+    }
+    return false;
+}
 
 // Воспроизвести звук
 function PlaySound(path, loop) {
-    var type = path.substr(7, 3);
-
-    switch (type) {
-        case "sfx":
-            PlaySfx(path, loop);
-            break;
-        case "env":
-            PlayEnv(path, loop);
-            break;
-        case "snd":
-            PlaySoundtrack(path, loop);
-            break;
-        case "voc":
-            PlayVoice(path, loop);
-            break;
+    var type = GetTypeSound(path);
+    if (type) {
+        sounds[type][path] = sounds[type][path] || new Audio(path);
+        sounds[type][path].currentTime = 0;
+        sounds[type][path].play();        
     }
 }
 
-// Воспроизвести мелкие звуки
-function PlaySfx(path, loop) {
-    console.log("PlaySfx");
-    sounds['sfx'][path] = sounds['sfx'][path] || new Audio(path);
-    sounds['sfx'][path].currentTime = 0;
-    sounds['sfx'][path].play();
-}
-
-// Воспроизвести окружение
-function PlayEnv(path, loop) {
-    console.log("PlayEnv");
-    sounds['env'][path] = sounds['env'][path] || new Audio(path);
-    sounds['env'][path].currentTime = 0;
-    sounds['env'][path].play();
-}
-
-// Воспроизвести саундрек
-function PlaySoundtrack(path, loop) {
-    console.log("PlaySoundtrack");
-    sounds['snd'][path] = sounds['snd'][path] || new Audio(path);
-    sounds['snd'][path].currentTime = 0;
-    sounds['snd'][path].play();
-}
-
-// Воспроизвести Голос
-function PlayVoice(path, loop) {
-    console.log("PlayVoice");
-    sounds['voc'][path] = sounds['voc'][path] || new Audio(path);
-    sounds['voc'][path].currentTime = 0;
-    sounds['voc'][path].play();
-}
-
+// Остановить звук
 function StopSound(path) {
-    //sounds['voc'][path].currentTime = 0;
+    var type = GetTypeSound(path);
+    if (type) {
+        console.log(path);
+        sounds[type][path] = sounds[type][path] || new Audio(path);
+        sounds[type][path].currentTime = 0;
+        sounds[type][path].pause();
+    }
 }
 
+// Остановить все типы звуков
+function StopAllSounds() {
+    StopAllSfx();
+    StopAllSEnv();
+    StopAllSnd();
+    StopAllVoc();
+}
+
+// Остановить все SFX
+function StopAllSfx() {
+    for (path in sounds["sfx"]) {
+        StopSound(path);
+    };
+}
+
+// Остановить все ENV
+function StopAllSEnv() {
+    for (path in sounds["env"]) {
+        StopSound(path);
+    };
+}
+
+// Остановить все SND
+function StopAllSnd() {
+    for (path in sounds["snd"]) {
+        StopSound(path);
+    };
+}
+
+// Остановить все VOC
+function StopAllVoc() {
+    for (path in sounds["voc"]) {
+        StopSound(path);
+    };
+}
 
 /* ******************** Настройки ******************** */
 
@@ -103,6 +115,7 @@ function SetCursor(id) {
 
 /* ******************** Объекты ******************** */
 
+// Допустимые параметры объектов
 var properties = {
     name:           "id",
     pos_x:          "left",
@@ -128,7 +141,6 @@ var properties = {
 
 // Установка параметров объекту
 function ObjSet(objname, params) {
-    //console.log("ObjSet");
     var obj = document.getElementById(objname);
 
     for (var key in params) {
