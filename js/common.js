@@ -59,6 +59,7 @@ function PlaySfx(path, loop) {
 function PlayEnv(path, loop) {
     console.log("PlayEnv");
     sounds['env'][path] = sounds['env'][path] || new Audio(path);
+    sounds['env'][path].currentTime = 0;
     sounds['env'][path].play();
 }
 
@@ -66,6 +67,7 @@ function PlayEnv(path, loop) {
 function PlaySoundtrack(path, loop) {
     console.log("PlaySoundtrack");
     sounds['snd'][path] = sounds['snd'][path] || new Audio(path);
+    sounds['snd'][path].currentTime = 0;
     sounds['snd'][path].play();
 }
 
@@ -73,8 +75,14 @@ function PlaySoundtrack(path, loop) {
 function PlayVoice(path, loop) {
     console.log("PlayVoice");
     sounds['voc'][path] = sounds['voc'][path] || new Audio(path);
+    sounds['voc'][path].currentTime = 0;
     sounds['voc'][path].play();
 }
+
+function StopSound(path) {
+    //sounds['voc'][path].currentTime = 0;
+}
+
 
 /* ******************** Настройки ******************** */
 
