@@ -87,6 +87,8 @@ window.onload = function () {
         }
     });
 
+    console.log( ObjGet("spr_main_provider_uis13") );
+
     ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
     ObjAnimate("spr_main_provider_uis2", "pos_y", 1, 0, function () { console.log("Call Back!"); }, [0,0,100, 1,0,150, 2,0,100]);
     ObjAnimate("spr_main_provider_uis3", "pos_z", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,2, 2,0,1]);

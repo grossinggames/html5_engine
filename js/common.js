@@ -143,6 +143,7 @@ var properties = {
 
 /*
 cursor value:
+    none
     default
     crosshair
     crosshair
@@ -160,17 +161,22 @@ cursor value:
     w-resize
     nw-resize
 */
+/*
+    null     - пустой
+    default  - стандартный
+    hand     - рука
+    down     - вниз
+    up       - вверх
+    left     - влево
+    right    - вправо
+*/
 
 // Установка параметров объекту
 function ObjSet(objname, params) {
     var obj = document.getElementById(objname);
 
     for (var key in params) {
-        //console.log("key = ", key);
-        //console.log("properties[key] = ", properties[key]);
-
         var value = params[key];
-        obj[key] = value;
 
         switch (key) {
             case "name":
@@ -227,12 +233,9 @@ function ObjSet(objname, params) {
                 obj.style[ properties[key] ] = "url(images/" + value + ")";
                 break;
             case "alp":
-                if (value == true) value = 1;
-                if (value == false) value = 0;
                 obj.style[ properties[key] ] = value;
                 break;
             default:
-                //console.log("default properties[key] = " + properties[key]);
                 obj.style[ properties[key] ] = value;
                 break;
         }
@@ -241,9 +244,67 @@ function ObjSet(objname, params) {
 
 // Получение параметров объекта
 function ObjGet(objname) {
-    console.log("ObjGet");
-    //console.log("111 ", document.getElementById("spr_main_provider_uis").style.left);
-    //console.log("222 ", document.getElementById("spr_main_provider_uis").style.top);
+    var obj = document.getElementById(objname);
+    var result = [];
+
+    for (key in properties) {
+        switch (properties[key]) {
+            case "name":
+                result[key] = obj.id;
+                break;
+            case "popup":
+                result[key] = obj.title;
+                break;
+            case "pos_x":
+            case "pos_y":
+                result[key] = obj.style[ properties[key] ]; // px
+                break;
+            case "pos_z":
+                result[key] = obj.style[ properties[key] ];
+                break;
+            case "angle":
+                //obj.style.transform = obj.style.transform.replace(/rotate\(\w+(.\w+)?\)/g, "rotate(" + value + "deg)");
+                break;
+            case "scale_x":
+                //obj.style.transform = obj.style.transform.replace(/scaleX\(\w+(.\w+)?\)/g, "scaleX(" + value + ")");
+                break;
+            case "scale_y":
+                //obj.style.transform = obj.style.transform.replace(/scaleY\(\w+(.\w+)?\)/g, "scaleY(" + value + ")");
+                break;
+            case "input":
+                if (value) {
+                    result[key] = obj.style[ properties[key] ]; // "auto";
+                } else {
+                    result[key] = obj.style[ properties[key] ]; // = "none";
+                }
+                break;
+            case "active":
+                if (value) {
+                    result[key] = obj.style[ properties[key] ]; // = "block";
+                } else {
+                    result[key] = obj.style[ properties[key] ]; // = "none";
+                }
+                break;
+            case "drawoff_x":
+            case "drawoff_y":
+                result[key] = obj.style[ properties[key] ]; // px
+                break;
+            case "width":
+            case "height":
+                result[key] = obj.style[ properties[key] ]; // "px";
+                break;
+            case "src":
+                result[key] = obj.style[ properties[key] ]; // = "url(images/" + value + ")";
+                break;
+            case "alp":
+                result[key] = obj.style[ properties[key] ];
+                break;
+            default:
+                result[key] = obj.style[ properties[key] ];
+                break;
+        }
+    };
+    return result;
 }
 
 // Прицепить объект к родителю
@@ -382,7 +443,6 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
             tmr_global.removeEventListener(currentRoom, anims[obj][type]);
         }
         anims[obj][type] = stepAnim;
-
         tmr_global.addEventListener(currentRoom, stepAnim);
     }
 }
