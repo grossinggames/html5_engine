@@ -16,7 +16,6 @@ function SwitchRoom(room) {
 
 // Получить текущую комнату
 function GetCurrentRoom() {
-    console.log("GetCurrentRoom");
     return currentRoom;
 }
 
@@ -55,7 +54,6 @@ function PlaySound(path, loop) {
 function StopSound(path) {
     var type = GetTypeSound(path);
     if (type) {
-        console.log(path);
         sounds[type][path] = sounds[type][path] || new Audio(path);
         sounds[type][path].muted = true;
     }
@@ -245,61 +243,64 @@ function ObjSet(objname, params) {
 // Получение параметров объекта
 function ObjGet(objname) {
     var obj = document.getElementById(objname);
-    var result = [];
+    var result = {};
 
     for (key in properties) {
         switch (properties[key]) {
-            case "name":
+            case "id":
                 result[key] = obj.id;
                 break;
-            case "popup":
+            case "title":
                 result[key] = obj.title;
                 break;
-            case "pos_x":
-            case "pos_y":
+            case "top":
+            case "left":
                 result[key] = obj.style[ properties[key] ]; // px
                 break;
-            case "pos_z":
+            case "z-index":
                 result[key] = obj.style[ properties[key] ];
                 break;
-            case "angle":
+            case "rotate":
                 //obj.style.transform = obj.style.transform.replace(/rotate\(\w+(.\w+)?\)/g, "rotate(" + value + "deg)");
                 break;
-            case "scale_x":
+            case "scaleX":
                 //obj.style.transform = obj.style.transform.replace(/scaleX\(\w+(.\w+)?\)/g, "scaleX(" + value + ")");
                 break;
-            case "scale_y":
+            case "scaleY":
                 //obj.style.transform = obj.style.transform.replace(/scaleY\(\w+(.\w+)?\)/g, "scaleY(" + value + ")");
                 break;
-            case "input":
-                if (value) {
-                    result[key] = obj.style[ properties[key] ]; // "auto";
-                } else {
-                    result[key] = obj.style[ properties[key] ]; // = "none";
-                }
+            case "pointer-events":
+                //if (value) {
+                    //result[key] = obj.style[ properties[key] ]; // "auto";
+                //} else {
+                    //result[key] = obj.style[ properties[key] ]; // = "none";
+                //}
                 break;
-            case "active":
-                if (value) {
-                    result[key] = obj.style[ properties[key] ]; // = "block";
-                } else {
-                    result[key] = obj.style[ properties[key] ]; // = "none";
-                }
+            case "display":
+                result[key] = obj.style[ properties[key] ];
                 break;
-            case "drawoff_x":
-            case "drawoff_y":
+            case "onmousedown":
+            case "onmouseup":
+            case "onmouseover":
+            case "onmouseout":
+                //result[key] = obj[ properties[key] ];
+                break;
+            case "background-position-x":
+            case "background-position-y":
                 result[key] = obj.style[ properties[key] ]; // px
                 break;
             case "width":
             case "height":
                 result[key] = obj.style[ properties[key] ]; // "px";
                 break;
-            case "src":
+            case "background-image":
                 result[key] = obj.style[ properties[key] ]; // = "url(images/" + value + ")";
                 break;
-            case "alp":
+            case "opacity":
                 result[key] = obj.style[ properties[key] ];
                 break;
             default:
+                console.log(key + ': ' + properties[key]);
                 result[key] = obj.style[ properties[key] ];
                 break;
         }

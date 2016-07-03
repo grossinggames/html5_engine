@@ -5,7 +5,6 @@ window.onload = function () {
 
     for (var i = 0, len = rooms.length; i < len; i++) {
         roomsTicks[ rooms[i] ] = new CustomEvent(rooms[i]);
-        console.log(rooms[i]);
     };
 
     var intervalTick = setInterval(function () {
