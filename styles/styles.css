@@ -10,22 +10,16 @@
     font-family: inherit;
 }
 .obj {
-    top: 0;
-    left: 0;
     position: absolute;
     background-color: transparent;
     background-repeat: no-repeat;
 }
 .spr {
-    top: 0;
-    left: 0;
     position: absolute;
     background-color: transparent;
     background-repeat: no-repeat;
 }
 .room {
-    top: 0;
-    left: 0;
     width: 1024px;
     height: 500px;
     position: absolute;

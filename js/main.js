@@ -1,5 +1,5 @@
 window.onload = function () {
-    SwitchRoom("room_main");
+    SwitchRoom("room_example");
 
     var roomsTicks = [];
 
@@ -11,82 +11,51 @@ window.onload = function () {
         tmr_global.dispatchEvent(roomsTicks[currentRoom]);
     }, TIME_UPDATE);
 
-    /*
-    ObjSet("spr_main_example", { src: "example.png" });
-    ObjSet("spr_main_example", { pos_x: 0 });
-    ObjSet("spr_main_example", { pos_y: 0 });
-    ObjSet("spr_main_example", { pos_z: 0 });
-    ObjSet("spr_main_example", { width: 50 });
-    ObjSet("spr_main_example", { height: 50 });
-    ObjSet("spr_main_example", { angle: 0 });
-    ObjSet("spr_main_example", { scale_x: 1 });
-    ObjSet("spr_main_example", { scale_y: 1 });
-    ObjSet("spr_main_example", { input: 1 });
-    ObjSet("spr_main_example", { alp: 1 });
-    ObjSet("spr_main_example", { drawoff_x: 0 });
-    ObjSet("spr_main_example", { drawoff_y: 0 });
-    ObjSet("spr_main_example", { cursor: "pointer" });
-    ObjSet("spr_main_example",
+    ObjSet("spr_example_example", { res: "images/example.png" });
+    ObjSet("spr_example_example", { pos_x: 700 });
+    ObjSet("spr_example_example", { pos_y: 200 });
+    ObjSet("spr_example_example", { pos_z: 0 });
+    ObjSet("spr_example_example", { width: 60 });
+    ObjSet("spr_example_example", { height: 60 });
+    ObjSet("spr_example_example", { angle: 0 });
+    ObjSet("spr_example_example", { scale_x: 1 });
+    ObjSet("spr_example_example", { scale_y: 1 });
+    ObjSet("spr_example_example", { input: 1 });
+    ObjSet("spr_example_example", { alp: 1 });
+    ObjSet("spr_example_example", { drawoff_x: 0 });
+    ObjSet("spr_example_example", { drawoff_y: 0 });
+    ObjSet("spr_example_example", { cursor: "pointer" });
+    ObjSet("spr_example_example", { popup: "Переход в другую комнату" });
+    ObjSet("spr_example_example",
     {
         event_mdown:  function () {
-            console.log("event_mdown");
         },
         event_mup:  function () {
-            console.log("event_mup");
-        },
-        event_menter:  function () {
-            console.log("event_menter");
-        },
-        event_mleave:  function () {
-            console.log("event_mleave");
-        }
-    });
-    ObjAnimate("spr_main_example", "angle", 0, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
-    SwitchRoom("room_example");
-    */
-
-    ObjSet("spr_main_provider_uis13", { cursor: "pointer" });
-
-    ObjSet("spr_main_provider_uis13", { popup: "Переход в другую комнату" });
-    ObjSet("spr_main_provider_uis31", { popup: "Переход в другую комнату" });
- 
-    ObjSet("spr_main_provider_uis13",
-    {
-        event_mdown:  function () {
-            //console.log("event_mdown");
-        },
-        event_mup:  function () {
-            //console.log("event_mup");
-            PlaySound("sounds/sfx_sound.mp3", 0);
-            SwitchRoom("room_example");
-        },
-        event_menter:  function () {
-            //console.log("event_menter");
-        },
-        event_mleave:  function () {
-            //console.log("event_mleave");
-        }
-    });
-    ObjSet("spr_main_provider_uis31",
-    {
-        event_mdown:  function () {
-            //console.log("event_mdown");
-        },
-        event_mup:  function () {
-            //console.log("event_mup");
             StopAllSounds();
             PlaySound("sounds/sfx_sound.mp3", 0);
             SwitchRoom("room_main");
         },
         event_menter:  function () {
-            //console.log("event_menter");
         },
         event_mleave:  function () {
-            //console.log("event_mleave");
         }
     });
 
-    console.log( ObjGet("spr_main_provider_uis13") );
+    ObjSet("spr_main_provider_uis13", { res: "images/example.png" });
+    ObjSet("spr_main_provider_uis13", { cursor: "pointer" });
+    ObjSet("spr_main_provider_uis13",
+    {
+        event_mdown:  function () {
+        },
+        event_mup:  function () {
+            PlaySound("sounds/sfx_sound.mp3", 0);
+            SwitchRoom("room_example");
+        },
+        event_menter:  function () {
+        },
+        event_mleave:  function () {
+        }
+    });
 
     ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
     ObjAnimate("spr_main_provider_uis2", "pos_y", 1, 0, function () { console.log("Call Back!"); }, [0,0,100, 1,0,150, 2,0,100]);
@@ -99,4 +68,5 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis9", "width", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis10", "height", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
+
 };

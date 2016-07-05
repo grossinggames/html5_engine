@@ -1,5 +1,3 @@
-//console.log("common is load");
-
 /* ******************** Комнаты ******************** */
 // Все комнаты
 var rooms = ["room_example", "room_main"];
@@ -14,13 +12,14 @@ function SwitchRoom(room) {
     currentRoom = room;
 }
 
-// Получить текущую комнату
+// Получить имя текущей комнаты
 function GetCurrentRoom() {
     return currentRoom;
 }
 
 /* ******************** Звуки ******************** */
 
+// Типы звуков
 var sounds = [];
 sounds["sfx"] = [];
 sounds["env"] = [];
@@ -30,9 +29,8 @@ sounds["voc"] = [];
 // Получить тип звука
 function GetTypeSound(path) {
     var type = path.substr(7, 3);
-    if ( (type == "sfx") || (type == "env") || 
+    if ( (type == "sfx") || (type == "env") ||
         (type == "snd") || (type == "voc") ) {
-        //console.log("type = " + type);
         return type;
     }
     return false;
@@ -59,7 +57,7 @@ function StopSound(path) {
     }
 }
 
-// Остановить все типы звуков
+// Остановить все звуки
 function StopAllSounds() {
     StopAllSfx();
     StopAllSEnv();
@@ -67,28 +65,28 @@ function StopAllSounds() {
     StopAllVoc();
 }
 
-// Остановить все SFX
+// Остановить все Sfx
 function StopAllSfx() {
     for (path in sounds["sfx"]) {
         StopSound(path);
     };
 }
 
-// Остановить все ENV
+// Остановить все Env
 function StopAllSEnv() {
     for (path in sounds["env"]) {
         StopSound(path);
     };
 }
 
-// Остановить все SND
+// Остановить все Snd
 function StopAllSnd() {
     for (path in sounds["snd"]) {
         StopSound(path);
     };
 }
 
-// Остановить все VOC
+// Остановить все Voc
 function StopAllVoc() {
     for (path in sounds["voc"]) {
         StopSound(path);
@@ -116,50 +114,30 @@ function SetCursor(id) {
 
 // Допустимые параметры объектов
 var properties = {
-    name:           "id",
-    pos_x:          "left",
-    pos_y:          "top",
-    pos_z:          "z-index",
-    alp:            "opacity",
+     name:           "id",
+     pos_x:          "left",
+     pos_y:          "top",
+     pos_z:          "z-index",
+     alp:            "opacity",
     angle:          "rotate",
     scale_x:        "scaleX",
     scale_y:        "scaleY",
     input:          "pointer-events",
-    active:         "display",
-    drawoff_x:      "background-position-x",
-    drawoff_y:      "background-position-y",
-    event_mdown:    "onmousedown",
-    event_mup:      "onmouseup",
-    event_menter:   "onmouseover",
-    event_mleave:   "onmouseout",
-    width:          "width",
-    height:         "height",
-    src:            "background-image",
-    popup:          "title",
-    cursor:         "cursor"
+     active:         "display",
+     drawoff_x:      "background-position-x",
+     drawoff_y:      "background-position-y",
+     event_mdown:    "onmousedown",
+     event_mup:      "onmouseup",
+     event_menter:   "onmouseover",
+     event_mleave:   "onmouseout",
+     width:          "width",
+     height:         "height",
+     res:            "background-image",
+     popup:          "title",
+     cursor:         "cursor"
 };
 
-/*
-cursor value:
-    none
-    default
-    crosshair
-    crosshair
-    move
-    pointer
-    progress
-    text
-    wait
-    n-resize
-    ne-resize
-    e-resize
-    se-resize
-    s-resize
-    sw-resize
-    w-resize
-    nw-resize
-*/
-/*
+/*  CURSOR
     null     - пустой
     default  - стандартный
     hand     - рука
@@ -182,10 +160,6 @@ function ObjSet(objname, params) {
                 break;
             case "popup":
                 obj.title = value;
-                break;
-            case "pos_x":
-            case "pos_y":
-                obj.style[ properties[key] ] = value + "px";
                 break;
             case "pos_z":
                 obj.style[ properties[key] ] = Math.round(value);
@@ -219,22 +193,25 @@ function ObjSet(objname, params) {
             case "event_mleave":
                 obj[ properties[key] ] = value;
                 break;
+            case "pos_x":
+            case "pos_y":
             case "drawoff_x":
             case "drawoff_y":
-                obj.style[ properties[key] ] = value + "px";
-                break;
             case "width":
             case "height":
                 obj.style[ properties[key] ] = value + "px";
                 break;
-            case "src":
-                obj.style[ properties[key] ] = "url(images/" + value + ")";
+            case "res":
+                obj.style[ properties[key] ] = "url(" + value + ")";
                 break;
             case "alp":
                 obj.style[ properties[key] ] = value;
                 break;
-            default:
+            case "cursor":
                 obj.style[ properties[key] ] = value;
+                break;
+            default:
+                console.log('ObjSet Ошибка default ' + key + ': ' + properties[key]);
                 break;
         }
     }
@@ -253,12 +230,8 @@ function ObjGet(objname) {
             case "title":
                 result[key] = obj.title;
                 break;
-            case "top":
-            case "left":
-                result[key] = obj.style[ properties[key] ]; // px
-                break;
             case "z-index":
-                result[key] = obj.style[ properties[key] ];
+                result[key] = Number(obj.style[ properties[key] ]);
                 break;
             case "rotate":
                 //obj.style.transform = obj.style.transform.replace(/rotate\(\w+(.\w+)?\)/g, "rotate(" + value + "deg)");
@@ -270,38 +243,43 @@ function ObjGet(objname) {
                 //obj.style.transform = obj.style.transform.replace(/scaleY\(\w+(.\w+)?\)/g, "scaleY(" + value + ")");
                 break;
             case "pointer-events":
-                //if (value) {
-                    //result[key] = obj.style[ properties[key] ]; // "auto";
-                //} else {
-                    //result[key] = obj.style[ properties[key] ]; // = "none";
-                //}
+                if (obj.style[ properties[key] ] == "none") {
+                    result[key] = 0;
+                } else {
+                    result[key] = 1;
+                }
                 break;
             case "display":
-                result[key] = obj.style[ properties[key] ];
+                if (obj.style[ properties[key] ] == "none") {
+                    result[key] = 0;
+                } else {
+                    result[key] = 1;
+                }
                 break;
             case "onmousedown":
             case "onmouseup":
             case "onmouseover":
             case "onmouseout":
-                //result[key] = obj[ properties[key] ];
                 break;
+            case "top":
+            case "left":
             case "background-position-x":
             case "background-position-y":
-                result[key] = obj.style[ properties[key] ]; // px
-                break;
             case "width":
             case "height":
-                result[key] = obj.style[ properties[key] ]; // "px";
+                result[key] = Number( obj.style[ properties[key] ].replace("px", "") );
                 break;
             case "background-image":
-                result[key] = obj.style[ properties[key] ]; // = "url(images/" + value + ")";
+                result[key] = obj.style[ properties[key] ];
                 break;
             case "opacity":
+                result[key] = Number(obj.style[ properties[key] ]);
+                break;
+            case "cursor":
                 result[key] = obj.style[ properties[key] ];
                 break;
             default:
-                console.log(key + ': ' + properties[key]);
-                result[key] = obj.style[ properties[key] ];
+                console.log('ObjGet Ошибка default ' + key + ': ' + properties[key]);
                 break;
         }
     };
@@ -329,6 +307,8 @@ var TIME_UPDATE = 20;
 var anims = [];
 
 // Анимирование объекта
+// (Важно! объект должен быть заанимирован только в своей комнате и иметь правильное имя )
+// Пример: room_example spr_example_spritename
 function ObjAnimate(obj, type, loop, relative, cb, anm) {
     if (anm.length % 3 == 0) {
         var arrayAnim = [];
@@ -350,12 +330,11 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                 var diffValue = (arrayAnim[ i ][ 1 ] - arrayAnim[ i - 1 ][ 1 ]);
 
                 var counter = Math.floor( (diffTime * 1000) / TIME_UPDATE);
-                step = (diffValue / counter).toFixed(2);
+                step = (diffValue / counter).toFixed(6);
             }
 
             arrayAnim[ i ].push(step);
         }
-
         var way = [ arrayAnim[ 0 ][ 1 ] ];
 
         // Создание пути
@@ -363,35 +342,37 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
             var step = Number(arrayAnim[ i + 1 ][ 2 ]);
             var stepWay = arrayAnim[ i ][ 1 ];
             var needWay = arrayAnim[ i + 1 ][ 1 ];
+            var diffTime = (arrayAnim[ i + 1 ][ 0 ] - arrayAnim[ i ][ 0 ]) * 1000;
 
-            while (stepWay != needWay) {
-                stepWay = ( Number(stepWay) + step ).toFixed(2);
+            while ( (stepWay != needWay) || (diffTime > 0) ) {
+                stepWay = (Number(stepWay) + step).toFixed(6);
 
                 if (step > 0) {
                     if (stepWay > needWay) {
                         stepWay = needWay;
+                        diffTime = 0;
                     }
                 } else if (step < 0) {
                     if (stepWay < needWay) {
                         stepWay = needWay;
+                        diffTime = 0;
                     }
                 } else {
-                    console.log("Ошибка Шаг равен нулю");
+                    diffTime -= TIME_UPDATE;
+                    if (diffTime <= 0) {
+                        diffTime = 0;
+                        stepWay = needWay;
+                    }
                 }
                 way.push(stepWay);
             }
         }
-
-        //console.log(way);
-
         var cursor = 0;
         var len = way.length;
 
+        // Установить новые значения
         function stepAnim() {
-            //console.log(type);
             if (cursor < len) {
-                //console.log("cursor: " + way[ cursor ]);
-
                 switch (type) {
                     case "pos_x":
                         ObjSet(obj, { pos_x: way[ cursor ] });
@@ -432,7 +413,7 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                 if (loop) {
                     cursor = 0;
                 } else {
-                    tmr_global.removeEventListener(currentRoom, stepAnim);
+                    tmr_global.removeEventListener(room, stepAnim);
                     cb();
                 }
             }
@@ -440,10 +421,12 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
         // Проверить что творится в массивах
         anims[obj] = anims[obj] || [];
 
+        var room = "room_" + obj.match(/_[^_]+_/)[0].match(/[^_]+/)[0];
+
         if (anims[obj][type]) {
-            tmr_global.removeEventListener(currentRoom, anims[obj][type]);
+            tmr_global.removeEventListener(room, anims[obj][type]);
         }
         anims[obj][type] = stepAnim;
-        tmr_global.addEventListener(currentRoom, stepAnim);
+        tmr_global.addEventListener(room, stepAnim);
     }
 }
