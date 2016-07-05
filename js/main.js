@@ -41,7 +41,23 @@ window.onload = function () {
         }
     });
 
-    console.log( ObjGet("spr_example_example") );
+    ObjSet("txt_example_text", { pos_x: 400 });
+    ObjSet("txt_example_text", { pos_y: 200 });
+    ObjSet("txt_example_text",
+    {
+        event_mdown:  function () {
+            console.log('event_mdown');
+        },
+        event_mup:  function () {
+            console.log('event_mup');
+        },
+        event_menter:  function () {
+            console.log('event_menter');
+        },
+        event_mleave:  function () {
+            console.log('event_mleave');
+        }
+    });
 
     ObjSet("spr_main_provider_uis13", { res: "images/example.png" });
     ObjSet("spr_main_provider_uis13", { cursor: "hand" });
