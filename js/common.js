@@ -137,15 +137,11 @@ var properties = {
      cursor:         "cursor"
 };
 
-/*  CURSOR
-    null     - пустой
-    default  - стандартный
-    hand     - рука
-    down     - вниз
-    up       - вверх
-    left     - влево
-    right    - вправо
-*/
+// Типы курсора
+var cursorType = {
+    default:    "default",
+    hand:       "pointer"
+};
 
 // Установка параметров объекту
 function ObjSet(objname, params) {
@@ -208,7 +204,7 @@ function ObjSet(objname, params) {
                 obj.style[ properties[key] ] = value;
                 break;
             case "cursor":
-                obj.style[ properties[key] ] = value;
+                obj.style[ properties[key] ] = cursorType[value];
                 break;
             default:
                 console.log('ObjSet Ошибка default ' + key + ': ' + properties[key]);
@@ -276,7 +272,11 @@ function ObjGet(objname) {
                 result[key] = Number(obj.style[ properties[key] ]);
                 break;
             case "cursor":
-                result[key] = obj.style[ properties[key] ];
+                if (obj.style[ properties[key] ] == "default") {
+                    result[key] = "default";
+                } else if (obj.style[ properties[key] ] == "pointer") {
+                    result[key] = "hand";
+                }
                 break;
             default:
                 console.log('ObjGet Ошибка default ' + key + ': ' + properties[key]);

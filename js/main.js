@@ -24,7 +24,7 @@ window.onload = function () {
     ObjSet("spr_example_example", { alp: 1 });
     ObjSet("spr_example_example", { drawoff_x: 0 });
     ObjSet("spr_example_example", { drawoff_y: 0 });
-    ObjSet("spr_example_example", { cursor: "pointer" });
+    ObjSet("spr_example_example", { cursor: "hand" });
     ObjSet("spr_example_example", { popup: "Переход в другую комнату" });
     ObjSet("spr_example_example",
     {
@@ -41,8 +41,10 @@ window.onload = function () {
         }
     });
 
+    console.log( ObjGet("spr_example_example") );
+
     ObjSet("spr_main_provider_uis13", { res: "images/example.png" });
-    ObjSet("spr_main_provider_uis13", { cursor: "pointer" });
+    ObjSet("spr_main_provider_uis13", { cursor: "hand" });
     ObjSet("spr_main_provider_uis13",
     {
         event_mdown:  function () {
