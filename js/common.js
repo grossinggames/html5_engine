@@ -97,17 +97,17 @@ function StopAllVoc() {
 
 // Установить полноэкранный режим
 function SetFullScreen(fs) {
-    console.log("SetFullScreen");
+    DbgTrace("SetFullScreen");
 }
 
 // Получить режим экрана
 function GetFullScreen() {
-    console.log("GetFullScreen");
+    DbgTrace("GetFullScreen");
 }
 
 // Установить курсор
 function SetCursor(id) {
-    console.log("SetCursor");
+    DbgTrace("SetCursor");
 }
 
 /* ******************** Объекты ******************** */
@@ -135,11 +135,11 @@ var properties = {
     res:            "background-image",
     popup:          "title",
     cursor:         "cursor",
-    "font-family":  "font-family",
-    "font-style":   "font-style",
-    "font-weight":  "font-weight",
-    "font-stretch": "font-stretch",
-    "font-size":    "font-size",
+    font_family:    "font-family",
+    font_style:     "font-style",
+    font_weight:    "font-weight",
+    font_stretch:   "font-stretch",
+    font_size:      "font-size",
     text:           "text"
 };
 
@@ -201,6 +201,7 @@ function ObjSet(objname, params) {
             case "drawoff_y":
             case "width":
             case "height":
+            case "font_size":
                 obj.style[ properties[key] ] = value + "px";
                 break;
             case "res":
@@ -212,18 +213,17 @@ function ObjSet(objname, params) {
             case "cursor":
                 obj.style[ properties[key] ] = cursorType[value];
                 break;
-            case "font-family":
-            case "font-style":
-            case "font-weight":
-            case "font-stretch":
-            case "font-size":
+            case "font_family":
+            case "font_style":
+            case "font_weight":
+            case "font_stretch":
                 obj.style[ properties[key] ] = value;
                 break;
             case "text":
                 obj.innerText = value;
                 break;
             default:
-                console.log('ObjSet Ошибка default ' + key + ': ' + properties[key]);
+                DbgTrace('ObjSet Ошибка default ' + key + ': ' + properties[key]);
                 break;
         }
     }
@@ -279,6 +279,7 @@ function ObjGet(objname) {
             case "background-position-y":
             case "width":
             case "height":
+            case "font-size":
                 result[key] = Number( obj.style[ properties[key] ].replace("px", "") );
                 break;
             case "background-image":
@@ -298,14 +299,13 @@ function ObjGet(objname) {
             case "font-style":
             case "font-weight":
             case "font-stretch":
-            case "font-size":
                 result[key] = obj.style[ properties[key] ];
                 break;
             case "text":
                 result[key] = obj['innerHTML'];
                 break;
             default:
-                console.log('ObjGet Ошибка default ' + key + ': ' + properties[key]);
+                DbgTrace('ObjGet Ошибка default ' + key + ': ' + properties[key]);
                 break;
         }
     };
@@ -314,17 +314,22 @@ function ObjGet(objname) {
 
 // Прицепить объект к родителю
 function ObjAttach(objname, toobjname) {
-    console.log("ObjAttach");
+    DbgTrace("ObjAttach");
 }
 
 // Отцепить объект
 function ObjDetach(objname) {
-    console.log("ObjDetach");
+    DbgTrace("ObjDetach");
 }
 
 // Удалить объект
 function ObjDelete(objname) {
-    console.log("ObjDelete");
+    DbgTrace("ObjDelete");
+}
+
+// Логгирование
+function DbgTrace(msg) {
+    console.log(msg);
 }
 
 // Время обновления параметров
@@ -343,7 +348,7 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
         // Добавить учет второго параметра [0,0,100, 1,0,200] - ускорения, замедления, линейно
         for (var i = 0; i < anm.length; i += 3) {
             var tmp = [ anm[ i ], anm[ i + 2 ] ];
-            //console.log(tmp);
+            //DbgTrace(tmp);
             arrayAnim.push(tmp);
         }
 

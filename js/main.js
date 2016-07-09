@@ -46,16 +46,16 @@ window.onload = function () {
     ObjSet("txt_example_txt",
     {
         event_mdown:  function () {
-            console.log('event_mdown');
+            DbgTrace('event_mdown');
         },
         event_mup:  function () {
-            console.log('event_mup');
+            DbgTrace('event_mup');
         },
         event_menter:  function () {
-            console.log('event_menter');
+            DbgTrace('event_menter');
         },
         event_mleave:  function () {
-            console.log('event_mleave');
+            DbgTrace('event_mleave');
         }
     });
 
@@ -75,15 +75,15 @@ window.onload = function () {
         }
     });
 
-    ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
-    ObjAnimate("spr_main_provider_uis2", "pos_y", 1, 0, function () { console.log("Call Back!"); }, [0,0,100, 1,0,150, 2,0,100]);
-    ObjAnimate("spr_main_provider_uis3", "pos_z", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,2, 2,0,1]);
-    ObjAnimate("spr_main_provider_uis4", "alp", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
-    ObjAnimate("spr_main_provider_uis5", "scale_x", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
-    ObjAnimate("spr_main_provider_uis6", "scale_y", 1, 0, function () { console.log("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
-    ObjAnimate("spr_main_provider_uis7", "drawoff_x", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
-    ObjAnimate("spr_main_provider_uis8", "drawoff_y", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
-    ObjAnimate("spr_main_provider_uis9", "width", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
-    ObjAnimate("spr_main_provider_uis10", "height", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
-    ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
+    ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
+    ObjAnimate("spr_main_provider_uis2", "pos_y", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,100, 1,0,150, 2,0,100]);
+    ObjAnimate("spr_main_provider_uis3", "pos_z", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,1, 1,0,2, 2,0,1]);
+    ObjAnimate("spr_main_provider_uis4", "alp", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
+    ObjAnimate("spr_main_provider_uis5", "scale_x", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
+    ObjAnimate("spr_main_provider_uis6", "scale_y", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,1, 1,0,0, 2,0,1]);
+    ObjAnimate("spr_main_provider_uis7", "drawoff_x", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
+    ObjAnimate("spr_main_provider_uis8", "drawoff_y", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
+    ObjAnimate("spr_main_provider_uis9", "width", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
+    ObjAnimate("spr_main_provider_uis10", "height", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
+    ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
 };
