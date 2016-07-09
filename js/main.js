@@ -41,9 +41,9 @@ window.onload = function () {
         }
     });
 
-    ObjSet("txt_example_text", { pos_x: 400 });
-    ObjSet("txt_example_text", { pos_y: 200 });
-    ObjSet("txt_example_text",
+    ObjSet("txt_example_txt", { pos_x: 400 });
+    ObjSet("txt_example_txt", { pos_y: 200 });
+    ObjSet("txt_example_txt",
     {
         event_mdown:  function () {
             console.log('event_mdown');
@@ -86,5 +86,4 @@ window.onload = function () {
     ObjAnimate("spr_main_provider_uis9", "width", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis10", "height", 1, 0, function () { console.log("Call Back!"); }, [0,0,50, 1,0,150, 2,0,50]);
     ObjAnimate("spr_main_provider_uis11", "angle", 1, 0, function () { console.log("Call Back!"); }, [0,0,0, 1,0,90, 2,0,0]);
-
 };

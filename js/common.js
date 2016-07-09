@@ -114,27 +114,33 @@ function SetCursor(id) {
 
 // Допустимые параметры объектов
 var properties = {
-     name:           "id",
-     pos_x:          "left",
-     pos_y:          "top",
-     pos_z:          "z-index",
-     alp:            "opacity",
+    name:           "id",
+    pos_x:          "left",
+    pos_y:          "top",
+    pos_z:          "z-index",
+    alp:            "opacity",
     angle:          "rotate",
     scale_x:        "scaleX",
     scale_y:        "scaleY",
     input:          "pointer-events",
-     active:         "display",
-     drawoff_x:      "background-position-x",
-     drawoff_y:      "background-position-y",
-     event_mdown:    "onmousedown",
-     event_mup:      "onmouseup",
-     event_menter:   "onmouseover",
-     event_mleave:   "onmouseout",
-     width:          "width",
-     height:         "height",
-     res:            "background-image",
-     popup:          "title",
-     cursor:         "cursor"
+    active:         "display",
+    drawoff_x:      "background-position-x",
+    drawoff_y:      "background-position-y",
+    event_mdown:    "onmousedown",
+    event_mup:      "onmouseup",
+    event_menter:   "onmouseover",
+    event_mleave:   "onmouseout",
+    width:          "width",
+    height:         "height",
+    res:            "background-image",
+    popup:          "title",
+    cursor:         "cursor",
+    "font-family":  "font-family",
+    "font-style":   "font-style",
+    "font-weight":  "font-weight",
+    "font-stretch": "font-stretch",
+    "font-size":    "font-size",
+    text:           "text"
 };
 
 // Типы курсора
@@ -205,6 +211,16 @@ function ObjSet(objname, params) {
                 break;
             case "cursor":
                 obj.style[ properties[key] ] = cursorType[value];
+                break;
+            case "font-family":
+            case "font-style":
+            case "font-weight":
+            case "font-stretch":
+            case "font-size":
+                obj.style[ properties[key] ] = value;
+                break;
+            case "text":
+                obj.innerText = value;
                 break;
             default:
                 console.log('ObjSet Ошибка default ' + key + ': ' + properties[key]);
@@ -277,6 +293,16 @@ function ObjGet(objname) {
                 } else if (obj.style[ properties[key] ] == "pointer") {
                     result[key] = "hand";
                 }
+                break;
+            case "font-family":
+            case "font-style":
+            case "font-weight":
+            case "font-stretch":
+            case "font-size":
+                result[key] = obj.style[ properties[key] ];
+                break;
+            case "text":
+                result[key] = obj['innerHTML'];
                 break;
             default:
                 console.log('ObjGet Ошибка default ' + key + ': ' + properties[key]);
