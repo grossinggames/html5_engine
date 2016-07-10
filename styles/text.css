@@ -1,10 +1,3 @@
-@charset "utf-8";
-
-
-
-
-
-
 /* Текст */
 body, input, select, textarea, legend {
 font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -14,11 +7,6 @@ color:#000000;
 }
 /* Отступы текста */
 p, hr, ul, ol, dl, table, blockquote, pre, fieldset, figure { margin:1em 0; cursor: default; }
-
-
-
-
-
 
 /* Ссылки */
 /* love head — link visited hover active */
@@ -30,10 +18,6 @@ a:active { color:#ee2222; border-bottom-color:rgba(238,0,119,.33); }
 .a-action, .a-anchor { border-bottom-style:dashed; border-bottom-width:1px; border-bottom-color:rgba(163,58,110,.33); color:#aa2222; cursor:pointer; }
 .a-action:hover, .a-anchor:hover { color:#ee2222; border-bottom-color:rgba(238,0,119,.33); }
 .a-action:target, .a-anchor:target { color:#ee2222; border-bottom-color:rgba(238,0,119,.33); }
-
-
-
-
 
 /* Заголовки */
 h1, h2, h3, h4, h5, h6 { font-weight:bold; color:#000; }
@@ -75,17 +59,11 @@ h5 + h6 { margin-top:1.0000em; /*18*/ }
 .as-h5 { font-size:1.0769em; /*14*/ line-height:1.2857em; /*+4=18*/ margin-top:2.0em; }
 .as-h6 { font-size:1.0000em; /*13*/ line-height:1.3846em; /*+5=18*/ margin-top:2.0em; }
 
-
-
 /* Виды текста */
 small { font-size:.8462em; /*11*/ }
 mark { background-color:yellow; color:#000000; }
 .nobr { white-space:nowrap; }
 .text-top { margin-top:0; }
-
-
-
-
 
 /* Виды параграфов */
 /*.author { text-align:right; font-style:italic; }*/
@@ -125,14 +103,6 @@ hr { margin-left:0; }
 .text-align-c { text-align:center }
 .text-align-j { text-align:justify; }
 
-
-
-
-
-
-
-
-
 /* Цитаты */
 q, blockquote { font-family:"Times New Roman",Times,serif; font-style:italic; letter-spacing:.025em; quotes: "„" "“" "«" "»"; }
 blockquote { padding-left:4em; padding-right:4em; position:relative; }
@@ -141,13 +111,6 @@ blockquote:after { content: """; }*/
 blockquote:before { content: "„"; /*0132*/ display:block; position:absolute; left:1.4em; top:-.1em; width:3em; color:#aa2222; font-size:2em; }
 blockquote p:after { content: "“"; /*0147*/ display:inline; position:absolute; left:auto; top:auto; color:#aa2222; font-size:2em; }
 cite { font-style:italic; }
-
-
-
-
-
-
-
 
 /* Коды */
 pre, code, kbd { font-family:"Courier New",Courier,monospace; font-weight:normal; }
@@ -162,22 +125,10 @@ overflow:auto;
 pre { margin-left:0; }
 }
 
-
-
-
-
 /* Постраничная навигация */
 .pagination { position:relative; }
 .pagination .textpages { position:absolute; font-size:.85em; line-height:1em; left:-100px; top:1.25em; text-align:right; width:84px; }
 .pagination .pages { font-size:2.125em; line-height:1em; }
-
-
-
-
-
-
-
-
 
 /* Определения */
 dfn { font-style:italic; }
@@ -194,14 +145,6 @@ margin-top:.5em;
 margin-bottom:.5em;
 }
 
-
-
-
-
-
-
-
-
 /* Списки */
 ul, ol { padding-left:2.5em; }
 ul ul { margin-top:.5em; margin-bottom:.5em; }
@@ -214,6 +157,7 @@ list-style-position:outside;
 margin-top:.5em;
 margin-bottom:.5em;
 }
+
 /* обычный */
 ul li {
 list-style-image:none;
@@ -224,6 +168,7 @@ margin-bottom:.5em;
 }
 ul > li > ul > li { list-style-type:circle; }
 ul > li > ul > li > ul > li { list-style-type:square; }
+
 /* стилизованные */
 ul.li-arrow, ul.li-arrow2, ul.li-check, ul.li-circle, ul.li-dash, ul.li-square, ul.li-star {
 padding-left:1.4em;
@@ -236,6 +181,7 @@ list-style-type:none;
 background-repeat:no-repeat;
 background-position:0 .2em;
 }
+
 /* кружок */
 ul.li-circle > li { background-image:url(/theme/img/li-circle.png); }
 /* стрелка */
@@ -258,12 +204,6 @@ ul.li-line { padding-left:0; }
 ul.li-line > li { padding-left:0; list-style-image:none; list-style-position:outside; list-style-type:none; background-image:none; border-bottom:solid 1px #000000; padding-bottom:.25em; margin-bottom:.25em; margin-top:.25em; }
 ul.li-line > li:last-child { border-bottom:none; }
 
-
-
-
-
-
-
 /* ul-treefree */
 ul.ul-treefree { padding-left:25px; }
 ul.ul-treefree ul { margin:0; padding-left:6px; }
@@ -280,19 +220,11 @@ position:absolute;
 z-index:10;
 top:6px;
 left:-6px;
-/*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAJCAYAAAA/33wPAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGRJREFUeNqsktsOwCAIQ9vF//9l5g1nmAMe1gc15kihEQAEQ94eMuxrFT7EqgxzbVX10nJimYOkFWIAMcMUdds70fOcRpxuF1Om24qgwSYOPm8k7sibH7HeGR1cmczxn390CzAAwzs5/LlqBVoAAAAASUVORK5CYII=');*/
-/*background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAALCAYAAAB7/H1+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGtJREFUeNrck8EOwCAIQ9vF///lTjdniIEMDrusB43xgQUiAAi3Mnua5bV24UXsqrCHecVeeLw8NpBGYiZhVthWcYG81KYL7eXb82wr12AYG3/Y5djOZAQ6M9IW/LMeu46DUlms7pufdwowAAbFQP9vY58OAAAAAElFTkSuQmCC');*/
 background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAALCAIAAAD0nuopAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE1JREFUeNpinDlzJgNlgAWI09LScEnPmjWLoAImrHpIAkwMFAMqGMGC6X44GzkIsHoQooAFTTVQKdbAwxOigyMsmIh3MC7ASHnqBAgwAD4CGeOiDhXRAAAAAElFTkSuQmCC');
 background-position:-11px 0;
 background-repeat:no-repeat;
 cursor:pointer;
 }
-
-
-
-
-
-
 
 /* ul-tree */
 ul.ul-tree { padding-left:2em; padding-bottom:12px; }
@@ -318,30 +250,6 @@ background-repeat:no-repeat;
 cursor:pointer;
 }
 
-
-
-
-
-
-/* Таблицы 
-table { border-collapse:collapse; border:1px solid #000000; }
-table caption { color:#AAAAAA; font-size:.85em; font-style:italic; text-align:left; }
-table td, table th { border:1px solid #000000; padding:2px 1em; }
-table thead {
-background-color:#EEEEEE;
-}
-table tfoot {
-background-color:#EEEEEE;
-}
-table.grid { border-collapse:collapse; border:none 0px; }
-table.grid td, table.grid th { border:none 0px; }
-@media screen and (max-width: 1120px) {
-table { margin-left:0; }
-}
-@media screen and (max-width: 650px) {
-table { margin-left:0; }
-}
-
 /* Таблицы */
 table { border-collapse:collapse; border:1px solid #999; }
 
@@ -362,11 +270,6 @@ background-image:-o-linear-gradient(top, #FFF 50%, #DDD 100%);
 }
 table.grid { border-collapse:collapse; border:none 0px; }
 table.grid td, table.grid th { border:none 0px; }
-
-
-
-
-
 
 /* Формы */
 form { }
@@ -403,7 +306,6 @@ background-image:none;
 border-color:#CCC;
 }
 
-
 form p { margin:.5em 0; }
 p label {
 display:inline-block;
@@ -432,6 +334,7 @@ padding:0;
 line-height:32px;
 text-align:center;
 }
+
 /* обязательные поля */
 label.required_field:before { content: "* "; color:#a70000; }
 p.required_field:before { content: "* "; color:#a70000; }
