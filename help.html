@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Html5Engine</title>
+  </head>
+  <body>
+    <p>SwitchRoom("room_example");</p>
+    <p>GetCurrentRoom();</p>
+    <br>
+    <p>DbgTrace("message");</p>
+    <br>
+    <p>PlaySound("sounds/sfx_sound.mp3", 0);</p>
+    <br>
+    <p>StopSound();</p>
+    <p>StopAllSfx();</p>
+    <p>StopAllEnv();</p>
+    <p>StopAllSnd();</p>
+    <p>StopAllVoc();</p>
+    <p>StopAllSounds();</p>
+    <br>
+	<p>ObjSet("spr_example_sprite", { pos_x: 15 });</p>
+	<p>ObjGet("spr_example_sprite").pos_x;</p>
+	<br>
+    <p>ObjAnimate("spr_example_sprite", "pos_x", 0, 0, function () { DbgTrace("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);</p>
+    <p>ObjStopAnimate("spr_example_sprite", "pos_x");</p>
+    <br>
+    <p>Свойства:</p>
+    <p>           name</p>
+    <p>           pos_x</p>
+    <p>           pos_y</p>
+    <p>           pos_z</p>
+    <p>           alp</p>
+    <p>           angle</p>
+    <p>           scale_x</p>
+    <p>           scale_y</p>
+    <p>           input</p>
+    <p>           active</p>
+    <p>           drawoff_x</p>
+    <p>           drawoff_y</p>
+    <p>           event_mdown</p>
+    <p>           event_mup</p>
+    <p>           event_menter</p>
+    <p>           event_mleave</p>
+    <p>           width</p>
+    <p>           height</p>
+    <p>           res</p>
+    <p>           popup</p>
+    <p>           cursor</p>
+    <p>           font_family</p>
+    <p>           font_style</p>
+    <p>           font_weight</p>
+    <p>           font_stretch</p>
+    <p>           font_size</p>
+    <p>           text</p>
+    <br>
+    <plaintext>
+    <div id="room_example" class="room"></div>
+    <div id="spr_example_sprite" class="spr" onmousedown="" onmouseup="" onmouseover=""  onmouseout="" title="" style="left: 0px; top: 0px; z-index: 0; width: 100px; height: 100px; transform: scaleX(1) scaleY(1) rotate(0deg); pointer-events: auto; opacity: 1; background-image: url('images/example.png'); background-position: 0px 0px;"></div>
+    <div id="txt_example_txt" class="txt" onmousedown="" onmouseup="" onmouseover="" onmouseout="" title="" style="left: 0px; top: 0px; z-index: 0; width: 100px; height: 100px; transform: scaleX(1) scaleY(1) rotate(0deg); pointer-events: auto; opacity: 1; background-image: url(''); background-position: 0px 0px; font-family: Trebuchet MS; font-style: normal; font-weight: normal; font-stretch: normal; font-size: 14px;">Example</div>
+
+    </plaintext>
+  </body>
+</html>

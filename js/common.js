@@ -60,7 +60,7 @@ function StopSound(path) {
 // Остановить все звуки
 function StopAllSounds() {
     StopAllSfx();
-    StopAllSEnv();
+    StopAllEnv();
     StopAllSnd();
     StopAllVoc();
 }
@@ -73,7 +73,7 @@ function StopAllSfx() {
 }
 
 // Остановить все Env
-function StopAllSEnv() {
+function StopAllEnv() {
     for (path in sounds["env"]) {
         StopSound(path);
     };
@@ -103,11 +103,6 @@ function SetFullScreen(fs) {
 // Получить режим экрана
 function GetFullScreen() {
     DbgTrace("GetFullScreen");
-}
-
-// Установить курсор
-function SetCursor(id) {
-    DbgTrace("SetCursor");
 }
 
 /* ******************** Объекты ******************** */
@@ -223,7 +218,7 @@ function ObjSet(objname, params) {
                 obj.innerText = value;
                 break;
             default:
-                DbgTrace('ObjSet Ошибка default ' + key + ': ' + properties[key]);
+                DbgTrace("ObjSet Ошибка default " + key + ": " + properties[key]);
                 break;
         }
     }
@@ -302,10 +297,10 @@ function ObjGet(objname) {
                 result[key] = obj.style[ properties[key] ];
                 break;
             case "text":
-                result[key] = obj['innerHTML'];
+                result[key] = obj["innerHTML"];
                 break;
             default:
-                DbgTrace('ObjGet Ошибка default ' + key + ': ' + properties[key]);
+                DbgTrace("ObjGet Ошибка default " + key + ": " + properties[key]);
                 break;
         }
     };
@@ -454,10 +449,17 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
 
         var room = "room_" + obj.match(/_[^_]+_/)[0].match(/[^_]+/)[0];
 
-        if (anims[obj][type]) {
+        if (anims[obj] && anims[obj][type]) {
             tmr_global.removeEventListener(room, anims[obj][type]);
         }
         anims[obj][type] = stepAnim;
         tmr_global.addEventListener(room, stepAnim);
+    }
+}
+
+function ObjStopAnimate(obj, type) {
+    if (anims[obj] && anims[obj][type]) {
+        var room = "room_" + obj.match(/_[^_]+_/)[0].match(/[^_]+/)[0];
+        tmr_global.removeEventListener(room, anims[obj][type]);
     }
 }

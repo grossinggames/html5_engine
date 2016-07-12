@@ -3,14 +3,40 @@
   <head>
     <meta charset="utf-8">
     <title>Html5Engine</title>
+    <link href="./styles/text.css" type="text/css" rel="stylesheet">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/ul-drop.js" type="text/javascript"></script>
   </head>
-  <body style="font-size: 14px; font-weight: inherit; font-family: Trebuchet MS; margin: 0; padding: 0;">
+  <body style="margin: 0; padding: 0;">
     <div style="position: fixed; height: 100%; margin: 1px 0 0 0;">
-        <div id="objects" style="height: 100%; width: 540px; background-color: #eaeaea; float: left; overflow: scroll;">spr_example_sprite1</div>
-        <div id="object_params" style="height: 500px; width: 367px; background-color: #eaeaea; float: left; overflow: scroll; margin: 0 0 0 1px;">object_params</div>
-        <div id="frame" style="height: 500px; width: 760px; background-color: #eaeaea; float: left; overflow: hidden; margin: 0 0 0 1px;">frame</div>
-        <div id="rooms" style="height: 500px; width: 250px; background-color: #eaeaea; float: left; overflow: scroll; margin: 0 0 0 1px;">room_example</div>
-        <div id="code" style="height: 453px; width: 1378px; background-color: #eaeaea; float: left; overflow: scroll; margin: 1px;">code</div>
+        <div id="objects" style="height: 100%; width: 540px; background-color: #eaeaea; float: left; overflow: scroll;">
+          <ul class="ul-treefree ul-dropfree">
+          <li>
+            <div class="drop" style="background-position: 0px 0px;"></div>spr_example_waves
+            <ul style="display: none;">
+              <li>spr_example_wave1</li>
+              <li><div class="drop" style="background-position: 0px 0px;"></div>spr_example_wave_blues
+                <ul style="display: none;">
+                  <li>spr_example_wave_blue1</li>
+                  <li>spr_example_wave_blue2</li>
+                  <li>spr_example_wave_blue3</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div class="drop" style="background-position: 0px 0px;"></div>spr_example_stars
+            <ul style="display: none;">
+              <li>spr_example_star1</li>
+              <li>spr_example_star2</li>
+            </ul>
+          </li>
+          <li>spr_example_sprite</li>
+          </ul>
+        </div>
+        <div id="object_params" style="position: absolute; height: 500px; width: 367px; background-color: #eaeaea; float: left; overflow: scroll; margin: 0 0 0 1px; left: 540px">object_params</div>
+        <div id="code" style="position: absolute; height: 100%; width: 1010px; background-color: #eaeaea; float: left; overflow: scroll; margin: 0 0 0 1px; left: 908px">code</div>
+        <div id="rooms" style="position: absolute; height: 476px; width: 367px; background-color: #eaeaea; float: left; overflow: scroll; margin: 1px 0 0 1px; top: 500px; left: 540px">room_example</div>
     </div>
   </body>
 </html>
