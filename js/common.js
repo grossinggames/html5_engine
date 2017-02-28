@@ -328,7 +328,7 @@ function DbgTrace(msg) {
 }
 
 // Время обновления параметров
-var TIME_UPDATE = 20;
+var TIME_UPDATE = 10;
 
 var anims = [];
 
@@ -362,6 +362,8 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
             arrayAnim[ i ].push(step);
         }
         var way = [ arrayAnim[ 0 ][ 1 ] ];
+        var timeLine = [ 0 ];
+        var summaTime = 0;
 
         // Создание пути
         for (var i = 0; i + 1 < arrayAnim.length; i++) {
@@ -370,16 +372,16 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
             var needWay = arrayAnim[ i + 1 ][ 1 ];
             var diffTime = (arrayAnim[ i + 1 ][ 0 ] - arrayAnim[ i ][ 0 ]) * 1000;
 
-            while ( (stepWay != needWay) || (diffTime > 0) ) {
+            while (diffTime > 0) {
                 stepWay = (Number(stepWay) + step).toFixed(6);
 
                 if (step > 0) {
-                    if (stepWay > needWay) {
+                    if (stepWay >= needWay) {
                         stepWay = needWay;
                         diffTime = 0;
                     }
                 } else if (step < 0) {
-                    if (stepWay < needWay) {
+                    if (stepWay <= needWay) {
                         stepWay = needWay;
                         diffTime = 0;
                     }
@@ -391,13 +393,20 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                     }
                 }
                 way.push(stepWay);
+                summaTime += TIME_UPDATE;
+                timeLine.push(summaTime);
             }
         }
+        console.log('way: ', way, ' ---------- timeLine: ', timeLine);
         var cursor = 0;
         var len = way.length;
+        var sumTime = 0;
 
         // Установить новые значения
-        function stepAnim() {
+        function stepAnim(event) {
+            sumTime += event.diffMs;
+            //console.log('sumTime: ', sumTime);
+
             if (cursor < len) {
                 switch (type) {
                     case "pos_x":
