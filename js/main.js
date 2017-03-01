@@ -13,7 +13,7 @@ window.onload = function () {
     var FPS = 0;
     var startFPStime = curTime;
 
-    var intervalTick = setInterval(function () {
+    var intervalTick = setInterval(function tick() {
     	var newTime = new Date().getTime();
     	diffTickTime = (newTime - curTime);
     	curTime = newTime;
@@ -93,7 +93,7 @@ window.onload = function () {
         }
     });
 
-    ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,0, 1,0,50, 2,0,0]);
+    ObjAnimate("spr_main_provider_uis", "pos_x", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,0, 1,0,100, 2,0,0]);
     // ObjAnimate("spr_main_provider_uis2", "pos_y", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,100, 1,0,150, 2,0,100]);
     // ObjAnimate("spr_main_provider_uis2", "pos_x", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,100, 1,0,150, 2,0,100]);
     // ObjAnimate("spr_main_provider_uis3", "pos_z", 1, 0, function () { DbgTrace("Call Back!"); }, [0,0,1, 1,0,2, 2,0,1]);

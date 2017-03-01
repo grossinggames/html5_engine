@@ -363,7 +363,7 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
         }
         var way = [ arrayAnim[ 0 ][ 1 ] ];
         var timeLine = [ 0 ];
-        var summaTime = 0;
+        var timeLineTotal = 0;
 
         // Создание пути
         for (var i = 0; i + 1 < arrayAnim.length; i++) {
@@ -393,65 +393,87 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
                     }
                 }
                 way.push(stepWay);
-                summaTime += TIME_UPDATE;
-                timeLine.push(summaTime);
+                timeLineTotal += TIME_UPDATE;
+                timeLine.push(timeLineTotal);
             }
         }
-        console.log('way: ', way, ' ---------- timeLine: ', timeLine);
+
+        //console.log('way: ', way, ' ---------- timeLine: ', timeLine);
         var cursor = 0;
         var len = way.length;
-        var sumTime = 0;
+        var totalTime = 0;
+
+        function setParam() {
+            //console.log('cursor: ', cursor);
+            switch (type) {
+                case "pos_x":
+                    ObjSet(obj, { pos_x: way[ cursor ] });
+                    break;
+                case "pos_y":
+                    ObjSet(obj, { pos_y: way[ cursor ] });
+                    break;
+                case "pos_z":
+                    ObjSet(obj, { pos_z: way[ cursor ] });
+                    break;
+                case "alp":
+                    ObjSet(obj, { alp: way[ cursor ] });
+                    break;
+                case "angle":
+                    ObjSet(obj, { angle: way[ cursor ] });
+                    break;
+                case "scale_x":
+                    ObjSet(obj, { scale_x: way[ cursor ] });
+                    break;
+                case "scale_y":
+                    ObjSet(obj, { scale_y: way[ cursor ] });
+                    break;
+                case "drawoff_x":
+                    ObjSet(obj, { drawoff_x: way[ cursor ] });
+                    break;
+                case "drawoff_y":
+                    ObjSet(obj, { drawoff_y: way[ cursor ] });
+                    break;
+                case "width":
+                    ObjSet(obj, { width: way[ cursor ] });
+                    break;
+                case "height":
+                    ObjSet(obj, { height: way[ cursor ] });
+                    break;
+            }
+        }
+
+        setParam();
+
+        // Получить релевантный курсоа
+        function getRelevantCursor() {
+            for (var i = cursor; i < len; i++) {
+                if (totalTime < timeLine[i]) {
+                    return i - 1;
+                }
+            };
+            return cursor;
+        }        
 
         // Установить новые значения
         function stepAnim(event) {
-            sumTime += event.diffMs;
-            //console.log('sumTime: ', sumTime);
+            totalTime += event.diffMs;
 
-            if (cursor < len) {
-                switch (type) {
-                    case "pos_x":
-                        ObjSet(obj, { pos_x: way[ cursor ] });
-                        break;
-                    case "pos_y":
-                        ObjSet(obj, { pos_y: way[ cursor ] });
-                        break;
-                    case "pos_z":
-                        ObjSet(obj, { pos_z: way[ cursor ] });
-                        break;
-                    case "alp":
-                        ObjSet(obj, { alp: way[ cursor ] });
-                        break;
-                    case "angle":
-                        ObjSet(obj, { angle: way[ cursor ] });
-                        break;
-                    case "scale_x":
-                        ObjSet(obj, { scale_x: way[ cursor ] });
-                        break;
-                    case "scale_y":
-                        ObjSet(obj, { scale_y: way[ cursor ] });
-                        break;
-                    case "drawoff_x":
-                        ObjSet(obj, { drawoff_x: way[ cursor ] });
-                        break;
-                    case "drawoff_y":
-                        ObjSet(obj, { drawoff_y: way[ cursor ] });
-                        break;
-                    case "width":
-                        ObjSet(obj, { width: way[ cursor ] });
-                        break;
-                    case "height":
-                        ObjSet(obj, { height: way[ cursor ] });
-                        break;
-                }
-                cursor++;
+            if (totalTime <= timeLineTotal) {
+                //console.log('timeLine[cursor] = ', timeLine[cursor], ' ------totalTime: ', totalTime);
+                cursor = getRelevantCursor();
+                setParam();
             } else {
                 if (loop) {
-                    cursor = 0;
+                    cursor = 1;
+                    totalTime %= timeLineTotal;
+                    //console.log('loop totalTime: ', totalTime);
+                    setParam();
                 } else {
                     tmr_global.removeEventListener(room, stepAnim);
                     cb();
                 }
             }
+            //console.log('totalTime = ', totalTime, ' ------cursor: ', cursor);
         }
         // Проверить что творится в массивах
         anims[obj] = anims[obj] || [];
@@ -462,6 +484,7 @@ function ObjAnimate(obj, type, loop, relative, cb, anm) {
             tmr_global.removeEventListener(room, anims[obj][type]);
         }
         anims[obj][type] = stepAnim;
+        
         tmr_global.addEventListener(room, stepAnim);
     }
 }
