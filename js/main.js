@@ -14,18 +14,18 @@ window.onload = function () {
     var startFPStime = curTime;
 
     var intervalTick = setInterval(function tick() {
-    	var newTime = new Date().getTime();
-    	diffTickTime = (newTime - curTime);
-    	curTime = newTime;
+        var newTime = new Date().getTime();
+        diffTickTime = (newTime - curTime);
+        curTime = newTime;
 
-    	if ( (curTime - startFPStime) >= 1000 ) {
-    		startFPStime = curTime;
-    		ObjSet("txt_example_txt", { text: FPS});
-    		FPS = 0;
-    	} else {
-    		FPS++;
-    	}
-		roomsTicks[currentRoom]['diffMs'] = diffTickTime;
+        if ( (curTime - startFPStime) >= 1000 ) {
+            startFPStime = curTime;
+            ObjSet("txt_example_txt", { text: FPS});
+            FPS = 0;
+        } else {
+            FPS++;
+        }
+        roomsTicks[currentRoom]['diffMs'] = diffTickTime;
         tmr_global.dispatchEvent(roomsTicks[currentRoom]);
     }, TIME_UPDATE);
 
